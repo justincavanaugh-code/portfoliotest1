@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Hardware Reclamation | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* CSS to match the ProjectsLab0 aesthetic */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+        
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#objectives">Objectives</a>
+        <a href="#hardware">Hardware Reclamation</a>
+        <a href="#methodology">Technical Methodology</a>
+        <a href="#case-study">Key Case Study</a>
+        <a href="#outcomes">Outcomes</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Legacy Hardware Reclamation & Forensic Sanitization</h1>
+            <p><strong>Role:</strong> Security Analyst & Systems Engineer</p>
+            <p><strong>Tools:</strong> 
+                <span class="tool-tag">Linux Mint XFCE</span>
+                <span class="tool-tag">dd</span>
+                <span class="tool-tag">hexdump</span>
+                <span class="tool-tag">shred</span>
+                <span class="tool-tag">fdisk</span>
+            </p>
+        </header>
+
+        <section id="objectives">
+            <h2 class="section-title">Objectives & Context</h2>
+            <p>This project began as a mission to repurpose a 15-year-old dormant Windows laptop into a high-security <strong>"clean room" environment</strong>. The goal was to create a secure, air-gapped forensic island for the inspection and analysis of legacy flash drives used in high-risk public environments.</p>
+            <p>This initiative allowed me to apply cybersecurity principles from professional certification programs to solve a real-world hardware problem.</p>
+        </section>
+
+        <section id="hardware">
+            <h2 class="section-title">Hardware Reclamation</h2>
+            <p>I researched lightweight, hardened operating systems suitable for 15-year-old architecture. The choice was <strong>Linux Mint XFCE</strong>, which provided the best balance of stability and performance for terminal-heavy operations.</p>
+            <div class="terminal-text">
+                [Status] System migrated to Linux Mint XFCE <br>
+                [Status] Hardware stabilized for high-performance terminal operations <br>
+                [Status] Network interfaces disabled (Air-Gap established)
+            </div>
+        </section>
+
+        <section id="methodology">
+            <h2 class="section-title">Technical Methodology</h2>
+            <p>Using a multi-stage workflow protocol, I ensured a secure process for media analysis:</p>
+            
+            <div class="method-box">
+                <h4>1. Hardware Isolation</h4>
+                <p>Disabled automounting to create a restricted environment, preventing "auto-run" or metadata-injection attacks from unknown media.</p>
+                
+                <h4>2. Forensic Reconnaissance</h4>
+                <p>Utilized <code>lsblk</code>, <code>dmesg</code>, and <code>fdisk</code> to verify device identity and transport layers before mounting.</p>
+
+                <h4>3. Sector-Level Analysis</h4>
+                <p>Performed deep inspection of unallocated disk space ("leading gap") using <code>dd</code> piped into <code>hexdump</code> and <code>strings</code>.</p>
+
+                <h4>4. Secure Sanitization</h4>
+                <p>Executed data destruction using the <code>shred</code> utility with random bit-pattern overwriting to ensure forensic unrecoverability.</p>
+            </div>
+        </section>
+
+        <section id="case-study">
+            <h2 class="section-title">Key Case Study: Legacy Bootloader Recovery</h2>
+            <div class="case-study">
+                <p>During the inspection of a "clean" formatted drive, I identified embedded ASCII strings referencing a legacy malware-removal program—remnants at least 13 years old.</p>
+                <p><strong>Discovery:</strong> While the filesystem appeared empty in Windows, the <strong>Master Boot Record (MBR)</strong> and "gap" sectors still contained legacy third-party code. This highlighted the significant risk of <strong>latent data persistence</strong>.</p>
+            </div>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Technical Proficiencies & Outcomes</h2>
+            <ul>
+                <li><strong>Systems Hardening:</strong> Transforming obsolete hardware into a specialized security workstation.</li>
+                <li><strong>Digital Forensics:</strong> Analyzing MBR/GPT structures and data persistence.</li>
+                <li><strong>Security Auditing:</strong> Identifying hidden bootable remnants in unallocated space.</li>
+            </ul>
+
+            <h3>Key Learnings</h3>
+            <p>I was surprised to find that a 15-year-old laptop running a lightweight Linux OS could perform deep-level forensic tasks that a modern Windows 11 machine could not easily replicate via standard GUI tools.</p>
+            
+            <p><strong>Outcome:</strong> A fleet of verified, forensically clean transfer media and a repeatable SOP for handling untrusted hardware.</p>
+        </section>
+    </main>
+
+</body>
+</html>
