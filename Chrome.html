@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Mod & Firmware Re-Engineering | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* CSS maintained from model page for visual consistency */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+        
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#technical-details">Technical Details</a>
+        <a href="#challenges">Challenges & Solutions</a>
+        <a href="#outcomes">Outcomes</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Advanced Hardware Mod & Firmware Re-Engineering</h1>
+            <p><strong>Role: </strong>Systems Engineer / Hardware Modder</p>
+            <p><strong>Tools:</strong> 
+                <span class="tool-tag">UEFI/Flashrom</span>
+                <span class="tool-tag">Linux</span>
+                <span class="tool-tag">Gemini AI (Diagnostics)</span>
+                <span class="tool-tag">Hardware modifications</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>This project involved modernizing "end-of-life" Chromebook hardware by bypassing proprietary, hardened security ecosystems. Unlike standard OS migrations, this required decoupling Google's "Read-Only" firmware and physical write-protection (WP) locks to transform a restricted device into a high-performance Linux workstation.</p>
+            
+            <p>Among the projects summarized in this portfolio, this one is probably least applicable to my current or future job-related responsibilties. However, it's a project I'm extremely proud of because it was an ultimately successful attempt on my part to take on a project in an area where I am not comfortable. It was also somewhat risky in the sense that I could have "bricked" one of my own laptops if I failed. I'm also especially proud of this project because it represents how the use of AI can allow a person to venture into an unfamiliar domain and not only learn something new, but find success.</p>
+            
+        </section>
+
+        <section id="technical-details">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p>The workflow required a multi-layered approach, transitioning from physical hardware deconstruction to low-level software debugging and kernel configuration.</p>
+            
+            <div class="terminal-text">
+                [Status] Polling hardware registers... <br>
+                [Command] crossystem wpsw_cur <br>
+                [Output] WP: enabled (Register Latch Detected) <br>
+                [Action] Initializing flashrom UEFI write...
+            </div>
+
+            <div class="method-box">
+                <h4>Phase 1: Hardware Deconstruction & WP Removal</h4>
+                <p>Performed precision disassembly to remove the physical Write-Protect screw. This stage involved identifying the specific motherboard layout and managing the Embedded Controller (EC) state to prep for firmware modification.</p>
+
+                <h4>Phase 2: Firmware & EC Debugging</h4>
+                <p>Utilized the Linux shell and utilities like <code>flashrom</code> and <code>crossystem</code> to poll motherboard status registers. This phase focused on overcoming "locked" states that persisted even after physical modifications.</p>
+                
+                <h4>Phase 3: OS Migration</h4>
+                <p>Successfully flashed custom UEFI firmware (MrChromebox) and transitioned the system to a lightweight, open-source Linux operating system. (Which I have since updated a second time.)</p>
+            </div>
+        </section>
+
+        <section id="challenges">
+            <h2 class="section-title">Key Challenge: The "Ghost Connection"</h2>
+            <div class="case-study">
+                <p><strong>The Hurdle:</strong> Despite removing the physical Write-Protect screw, the system continued to report "WP: enabled," preventing the firmware flash. Standard documentation offered no solution for this persistent software/hardware mismatch.</p>
+                <p><strong>The Fix:</strong> By using Gemini as a real-time diagnostic partner, I synthesized documentation on EC latches and kernel-level reporting. This led to the discovery of microscopic metallic debris bridging the contact pads on the motherboard. A precision cleaning of the contact pads cleared the "ghost connection," allowing for a successful UEFI image write.</p>
+            </div>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes & Skills</h2>
+            <ul>
+                <li><strong>Operating System Modification:</strong> Expertise in firmware flashing, EC state management, and BIOS/UEFI boot sequence optimization.</li>
+                <li><strong>Strategic Problem Solving using AI as a partner:</strong> Demonstrated the ability to use AI as an augmented diagnostic tool to perform root-cause analysis on complex hardware failures. AI's role as my technology consultant was crucial in this process.</li>
+                <li><strong>Hardware Engineering:</strong> Applied PCB disassembly and physical circuit diagnostics to resolve engineering bottlenecks.</li>
+            </ul>
+
+            <p><strong>Final Result:</strong> Successfully converted a restricted, proprietary device into a fully customizable, high-performance Linux workstation, establishing a replicable methodology for legacy hardware optimization.</p>
+        </section>
+    </main>
+
+</body>
+</html>

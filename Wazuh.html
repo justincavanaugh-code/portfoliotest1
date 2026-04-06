@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wazuh SIEM Deployment & Triage | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* CSS maintained from model page for visual consistency */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+        
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#technical-details">Technical Implementation</a>
+        <a href="#triage">Vulnerability Triage</a>
+        <a href="#challenges">Challenges & Solutions</a>
+        <a href="#outcomes">Outcomes</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Deployment of a SIEM Dashboard on My Virtual Network</h1>
+            <p><strong>Role:</strong> Security Engineer / SOC Analyst (Home Lab)</p>
+            <p><strong>Tools:</strong> 
+                <span class="tool-tag">Wazuh</span>
+                <span class="tool-tag">Docker Compose</span>
+                <span class="tool-tag">Ubuntu Server</span>
+                <span class="tool-tag">Virtualization</span>
+                <span class="tool-tag">OpenSSL</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>Successfully deployed a full-stack <strong>Wazuh dashboard (SIEM/XDR)</strong> environment within a virtualized Ubuntu instance on a Windows host. This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Beyond deployment, I utilized the environment to perform comprehensive vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu, and Linux Mint).</p>
+        </section>
+
+        <section id="technical-details">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p>The deployment followed a containerized architecture to ensure scalability and isolation of security services.</p>
+            
+            <div class="terminal-text">
+                [Status] Initializing Wazuh Stack... <br>
+                [System] Indexer, Manager, and Dashboard Containers: UP <br>
+                [Network] Mapping Port 443 -> 5601... Success.
+            </div>
+
+            <div class="method-box">
+                <h4>Infrastructure as Code</h4>
+                <p>Leveraged <strong>Docker Compose</strong> to orchestrate the multi-container environment, managing service dependencies and persistent data volumes to ensure configuration stayed intact across reboots.</p>
+
+                <h4>Security & Encryption</h4>
+                <p>Navigated version-specific certificate requirements by using the <code>indexer-certs-creator</code> tool to generate custom RSA certificates and private keys, replacing default insecure configurations for secure SSL/TLS communication.</p>
+
+                <h4>Network Engineering</h4>
+                <p>Configured Docker bridge networking and specific port mappings to allow secure remote access from the host browser to the virtualized internal dashboard.</p>
+            </div>
+        </section>
+
+        <section id="triage">
+            <h2 class="section-title">Enterprise Vulnerability Triage</h2>
+            <p>After deployment, I conducted a deep-dive analysis of a Linux-based server (Ubuntu 24.04). The goal was to move beyond "scan and patch" and into professional risk categorization.</p>
+            
+            <div class="method-box">
+                <h4>CVE Pattern Analysis</h4>
+                <p>Began by trianging and prioritizing vulnerabilities. I discovered that the majority were kernel-level vulnerabilities published within 14 days of the assessment, representing the "Patching Gap" where official vendor updates were not yet available.</p>
+
+                <h4>The Triage Framework</h4>
+                <ul>
+                    <li><strong>Vendor-Pending:</strong> Acknowledged vulnerabilities awaiting official patch release.</li>
+                    <li><strong>Deferred/Ignored:</strong> Older vulnerabilities deferred by the vendor due to stability risks.</li>
+                    <li><strong>Targeted Remediation:</strong> Specific fixes requiring manual installation outside of general upgrades.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="challenges">
+            <h2 class="section-title">Key Challenge</h2>
+            <div class="case-study">
+                <p><strong>The Hurdle:</strong> Encountered a v4.9.0-specific bug where certificate generation scripts created empty directories instead of valid <code>.pem</code> files, alongside Linux file ownership conflicts (UID 10001) that prevented the Docker daemon from reading keys.</p>
+                <p><strong>The Fix:</strong> Used low-level diagnostic tools (<code>ss</code>, <code>curl</code>, <code>docker inspect</code>) to identify the root cause. I corrected the directory structures manually and adjusted permission sets to ensure the Wazuh services could initialize successfully.</p>
+            </div>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes & Skills</h2>
+            <ul>
+                <li><strong>Critical Triage:</strong> Demonstrated the ability to distinguish between actionable risks and "acceptable" risks based on vendor patch availability.</li>
+                <li><strong>SIEM Proficiency:</strong> Gained advanced experience in Wazuh for inventory management, SCA (Security Configuration Assessment), and agent-to-manager troubleshooting.</li>
+                <li><strong>Risk Management:</strong> Shifted focus to <strong>Compensating Controls</strong> (SCA hardening) when official software fixes were unavailable.</li>
+                <li><strong>Using AI as a partner:</strong> Used multiple AI models to help me learn and navigate some of the more technical areas I was not familiar with going into this project. With AI's assistance, I was able to learn and complete the project much more quickly compared to working strictly from technical documentation.</li>
+            </ul>
+
+            <p><strong>Final Result:</strong> Established a fully functional, hardened SIEM environment with visibility into 200+ initial security alerts, providing immediate actionable data for ongoing system hardening.</p>
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Hosted LMS Home Lab | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+        
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#summary">Executive Summary</a>
+        <a href="#administration">LMS Administration</a>
+        <a href="#infrastructure">Technical Infrastructure</a>
+        <a href="#competencies">Core Competencies</a>
+        <a href="#outcome">Project Outcome</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Self-Hosting a Learning Management System in My Home Technology Lab</h1>
+            <p><strong>Role:</strong> LMS Administrator & Network/Systems Engineer</p>
+            <p><strong>Tools:</strong> 
+                <span class="tool-tag">Moodle</span>
+                <span class="tool-tag">Ubuntu Server</span>
+                <span class="tool-tag">LAMP Stack</span>
+                <span class="tool-tag">LMS Admin</span>
+            </p>
+        </header>
+
+        <section id="summary">
+            <h2 class="section-title">Executive Summary</h2>
+            <p>I successfully self-hosted a Moodle LMS instance within a private home technology lab, executing a true end-to-end deployment lifecycle. By engineering a virtual machine environment using Linux/Ubuntu Server hosted on Windows VMWare, I established a robust sandbox for testing enterprise-grade educational technology. This project demonstrates a holistic approach to digital learning—managing server-side stability, LMS configuration, pedagogical tool integration, and rigorous quality assurance testing.</p>
+        </section>
+
+        <section id="administration">
+            <h2 class="section-title">Platform Administration & Instructional Design</h2>
+            <div class="method-box">
+                <h4>1. Multi-Role User Governance</h4>
+                <p>Designed a comprehensive user hierarchy (Admin, Teacher, Student) and performed "Role Testing" to validate that permissions and data privacy were optimized for each stakeholder.</p>
+
+                <h4>2. Course Development & Gamification</h4>
+                <p>Launched original digital courses with structured learning paths. I engineered a leaderboard and a Digital Badging system to incentivize progress, creating a verifiable credentialing ecosystem.</p>
+
+                <h4>3. Plugin Integration</h4>
+                <p>Identified and configured community plugins to extend Moodle’s core functionality, conducting compatibility testing for advanced grading and interactive content.</p>
+            </div>
+        </section>
+
+        <section id="infrastructure">
+            <h2 class="section-title">Technical Infrastructure & Systems Engineering</h2>
+            <p>Managing the "under-the-hood" requirements to keep the LMS online involved full-stack orchestration:</p>
+            
+            <div class="terminal-text">
+                [Task] Provisioning LAMP Stack (Linux, Apache, MariaDB, PHP) <br>
+                [Task] Extending LVM partitions for storage scaling <br>
+                [Debug] Resolving PHP 8.3 / Moodle 4.3 versioning mismatch via XML logic <br>
+            </div>
+
+            <p>I executed advanced hardware scaling, including resizing virtual disks and manual server-side performance tuning to ensure high-availability service delivery.</p>
+        </section>
+
+        <section id="challenges">
+            <h2 class="section-title">Authoring & Interoperability</h2>
+            <div class="case-study">
+                <p>To ensure a seamless learner journey, I used the platform to test and publish content created with a variety of industry-standard tools, including <strong>H5P, SCORM, Adobe Captivate, Camtasia, Lumi,</strong> and <strong>Active Presenter</strong>.</p>
+            </div>
+        </section>
+
+        <section id="competencies">
+            <h2 class="section-title">Core Competencies</h2>
+            <ul>
+                <li><strong>LMS Governance:</strong> Mastery of site administration, user enrollment, and plugin lifecycles.</li>
+                <li><strong>Technical Problem Solving:</strong> Navigating complex backend environment logic and database schemas.</li>
+                <li><strong>UX/UI Validation:</strong> Commitment to testing the learner's journey across multiple roles.</li>
+            </ul>
+        </section>
+
+        <section id="outcome">
+            <h2 class="section-title">Outcome</h2>
+            <p>By managing the entire lifecycle of this Moodle instance—from the command line to the course dashboard—I have developed a unique ability to ensure that technical stability always serves the ultimate goal of effective instructional delivery.</p>
+        </section>
+    </main>
+
+</body>
+</html>
