@@ -180,39 +180,45 @@
 
                 <h4>Phase 2: [Phase Name]</h4>
                 <p>[Detail about this specific phase of the project.]</p>
-                
-                <div style="display: flex; gap: 20px; margin: 20px 0 0 0; flex-wrap: wrap;">
 
-  <figure style="flex: 1; min-width: 280px; text-align: center; margin: 0;">
-    <img src="images/AdminLeaderboard.jpg" alt="LevelUp Admin Leaderboard"
-      style="width: 100%; border-radius: 4px; border: 1px solid #ddd;"
-      onclick="document.getElementById('lightbox-leaderboard').classList.add('active')">
-    <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-      Admin view — LevelUp leaderboard showing participant XP rankings and progress — click to expand
-    </figcaption>
-  </figure>
+            <!-- Text + Portrait row -->
+<div style="display: flex; gap: 20px; margin: 20px 0 0 0; flex-wrap: wrap; align-items: flex-start;">
 
-  <figure style="flex: 1; min-width: 280px; text-align: center; margin: 0;">
+  <div style="flex: 1; min-width: 250px;">
+    <p>The LevelUp plugin creates a gamified learning experience, rewarding students with XP points as they engage with course activities. From the student's perspective, progress is visible at a glance — including their current level, total XP, ranking among peers, and a live feed of recent rewards.</p>
+  </div>
+
+  <figure style="flex: 0 0 auto; width: 280px; text-align: center; margin: 0;">
     <img src="images/LevelUpStudent.jpg" alt="LevelUp Student View"
       style="width: 100%; border-radius: 4px; border: 1px solid #ddd;"
       onclick="document.getElementById('lightbox-levelup').classList.add('active')">
     <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-      Student view — Level 10 achievement with XP total and recent rewards activity — click to expand
+      Student view — Level 10 with 1,604 XP and max level reached — click to expand
     </figcaption>
   </figure>
 
+</div>
+
+<!-- Leaderboard full-width below -->
+<figure style="text-align: center; margin: 30px 0 0 0;">
+  <img src="images/AdminLeaderboard.jpg" alt="LevelUp Admin Leaderboard"
+    style="width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #ddd;"
+    onclick="document.getElementById('lightbox-leaderboard').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+    Admin view — LevelUp leaderboard showing participant XP rankings and progress — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for LevelUp Student -->
+<div id="lightbox-levelup" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-levelup').classList.remove('active')">&times;</span>
+  <img src="images/LevelUpStudent.jpg" alt="LevelUp Student View Full Screen">
 </div>
 
 <!-- Lightbox for Admin Leaderboard -->
 <div id="lightbox-leaderboard" class="lightbox-overlay" onclick="this.classList.remove('active')">
   <span class="lightbox-close" onclick="document.getElementById('lightbox-leaderboard').classList.remove('active')">&times;</span>
   <img src="images/AdminLeaderboard.jpg" alt="LevelUp Admin Leaderboard Full Screen">
-</div>
-
-<!-- Lightbox for LevelUp Student -->
-<div id="lightbox-levelup" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox-levelup').classList.remove('active')">&times;</span>
-  <img src="images/LevelUpStudent.jpg" alt="LevelUp Student View Full Screen">
 </div>
 
                  <h4>Phase 3: [Placeholder]</h4>
