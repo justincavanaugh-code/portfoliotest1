@@ -173,7 +173,59 @@
 </div>
 
                 <h4>2. Course Development & Gamification</h4>
-                <p>Launched original digital courses with structured learning paths. I engineered a leaderboard and a Digital Badging system to incentivize progress, creating a verifiable credentialing ecosystem.</p>
+             <!-- Text + Portrait row -->
+<div style="display: flex; gap: 20px; margin: 20px 0 0 0; flex-wrap: wrap; align-items: flex-start;">
+
+  <div style="flex: 1; min-width: 250px;">
+    
+    <p>Created structured learning paths featuring digital programs. I engineered a leaderboard and a Digital Badging system to incentivize progress, creating a verifiable credentialing ecosystem.</p>
+      
+    <p>The LevelUp plugin creates a gamified learning experience, rewarding students with XP points as they engage with course activities. From the student's perspective, progress is visible at a glance — including their current level, total XP, ranking among peers, and a live feed of recent rewards.</p>
+
+    <p>For this proof of concept, I configured the XP point rules for a variety of activities within a course. Realistic examples include a student completing an assignment and/or viewing or creating a discussion board post.</p>
+
+    <p>By testing from the admin and student perspectives using the personas I created, I was able to verify that instructors and students received real-time updates resulting from actions within a course designed to trigger gamification-related elements.</p>
+
+    <p>Students completing activities within the course that are designated by the instructor to earn XP points see real-time updates not only to their individual profile and point total, but also updates their progress and ranking relative to the course leaderboard.</p>
+
+    <p>Instructors and admins can adjust the points awarded for designated activities in real time; they can also add additional point-generated activities as needed.</p>
+
+    <p>Although this section focuses on students earning XP points for activities within a course, the LevelUp plugin can also be applied accomplishments such as earning digital badges for course completion.</p>
+      
+  </div>
+
+  <figure style="flex: 0 0 auto; width: 280px; text-align: center; margin: 0;">
+    <img src="images/LevelUpStudent.jpg" alt="LevelUp Student View"
+      style="width: 100%; border-radius: 4px; border: 1px solid #ddd;"
+      onclick="document.getElementById('lightbox-levelup').classList.add('active')">
+    <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+      Student view — Level 10 with 1,604 XP and max level reached — click to expand
+    </figcaption>
+  </figure>
+
+</div>
+
+<!-- Leaderboard full-width below -->
+<figure style="text-align: center; margin: 30px 0 0 0;">
+  <img src="images/AdminLeaderboard.jpg" alt="LevelUp Admin Leaderboard"
+    style="width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #ddd;"
+    onclick="document.getElementById('lightbox-leaderboard').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+    Admin view — LevelUp leaderboard showing participant XP rankings and progress — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for LevelUp Student -->
+<div id="lightbox-levelup" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-levelup').classList.remove('active')">&times;</span>
+  <img src="images/LevelUpStudent.jpg" alt="LevelUp Student View Full Screen">
+</div>
+
+<!-- Lightbox for Admin Leaderboard -->
+<div id="lightbox-leaderboard" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-leaderboard').classList.remove('active')">&times;</span>
+  <img src="images/AdminLeaderboard.jpg" alt="LevelUp Admin Leaderboard Full Screen">
+</div>
 
                 <h4>3. Plugin Integration</h4>
                 <p>Identified and configured community plugins to extend Moodle’s core functionality, conducting compatibility testing for advanced interactive content.</p>
