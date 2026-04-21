@@ -239,7 +239,20 @@
                 <p>[Detail about this specific phase of the project.]</p>    
 
                 IMAGE
-                
+
+  <figure style="text-align: center; margin: 20px 0 0 0;">
+  <img src="images/AdminPlugins.png" alt="Admin Plugins screen" 
+    style="width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #ddd;"
+    onclick="document.getElementById('lightbox-roles').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+    Admin view of Moodle's role hierarchy and permission structure — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for AdminRoles -->
+<div id="lightbox-roles" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-roles').classList.remove('active')">&times;</span>
+  <img src="images/AdminRoles.png" alt="Moodle Role Permissions Full Screen">
             </div>
         </section>
 
