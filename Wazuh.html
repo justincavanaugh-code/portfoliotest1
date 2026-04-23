@@ -104,33 +104,14 @@
             </p>
         </header>
 
-<section id="overview">
-    <h2 class="section-title">Project Overview</h2>
-    <p>In order to simulate an enterprise security operations environment...</p>
-    </section>
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p> In order to simulate an enterprise security operations environment and apply cybersecurity concepts, I installed and self-hosted a SIEM dashboard in my home technology lab. I enrolled multiple machines from my network into a centralized Wazuh manager — just as a SOC analyst would monitor a diverse fleet of corporate machines. By deliberately choosing endpoints - or "agents" - with different operating systems, hardware profiles, and usage patterns, I was able to generate varied, realistic security telemetry and practice a <strong>full cybersecurity analyst workflow: detection, triage, remediation, and reporting.</strong> </p>
 
-<section id="triage">
-    <h2 class="section-title">Enterprise Vulnerability Triage</h2>
-    <p>I used the SIEM dashboard to conduct a deep-dive analysis...</p>
-    
-    <div class="method-box">
-        <h4>CVE Pattern Analysis</h4>
-        </div>
-</section>
-
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/WazuhBlueLogin.jpg" alt="Wazuh Screenshot" style="width: 100%; max-width: 700px;" onclick="document.getElementById('lightbox').classList.add('active')">
-  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">Wazuh SIEM dashboard running in home lab environment — click to expand</figcaption>
-</figure>
-
-<div id="lightbox" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
-  <img src="images/WazuhBlueLogin.jpg" alt="Wazuh SIEM dashboard Full Screen">
-</div>
-
-<section id="threat-hunting">
-    <h2 class="section-title">Threat Hunting & Alert Analysis</h2>
-    </section>
+            <p> With three active agents producing continuous event data, I could observe how security postures differ across operating system families, map observed behaviors, and benchmark each endpoint against industry compliance frameworks — all from a single dashboard. I limited the initial number of agents to ensure a manageable amount of data. Three machines from my home network were enrolled as Wazuh agents — including physical laptops and a production-style virtual server - to represent the variety of machines found at a company. </p>
+            
+            <p>This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Using several AI models as a learning partner, I successfully deployed a full-stack <strong>Wazuh SIEM dashboard</strong> within a virtualized Ubuntu server instance on a Windows host (using VMWare). After deployment, I performed comprehensive <strong>vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu Server, and Linux Mint)</strong>.</p>
+        </section>
 
         <section id="triage">
             <h2 class="section-title">Enterprise Vulnerability Triage</h2>
@@ -148,7 +129,6 @@
                 </ul>
             </div>
         </section>
-
         
         
                </header>
@@ -191,21 +171,6 @@
             </div>
         </section>
 
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/WazuhVM.jpg" alt="Wazuh virtual SIEM dashboard"
-    style="width: 100%; max-width: 700px;"
-    onclick="document.getElementById('lightbox-vm').classList.add('active')">
-  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
-    Wazuh SIEM dashboard configured in VMware Workstation — click to expand
-  </figcaption>
-</figure>
-
-<!-- Lightbox for MoodleVM -->
-<div id="lightbox-vm" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox-vm').classList.remove('active')">&times;</span>
-  <img src="images/WazuhVM.jpg" alt="Wazuh SIEM dashboard Full Screen">
-</div>
-        
         <section id="outcomes">
             <h2 class="section-title">Outcomes & Skills</h2>
             <ul>
