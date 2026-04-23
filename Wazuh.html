@@ -93,30 +93,70 @@
 
     <main class="main-content">
         <header class="project-header">
-            <h1>Deployment of a SIEM Dashboard on My Virtual Network</h1>
+            <h1>Self-Hosting a SIEM Dashboard</h1>
             <p><strong>Role:</strong> Security Engineer / SOC Analyst (Home Lab)</p>
             <p><strong>Tools:</strong> 
-                <span class="tool-tag">Wazuh</span>
-                <span class="tool-tag">Docker Compose</span>
+                <span class="tool-tag">Cybsecurity</span>
+                <span class="tool-tag">SOC</span>
                 <span class="tool-tag">Ubuntu Server</span>
                 <span class="tool-tag">Virtualization</span>
-                <span class="tool-tag">OpenSSL</span>
+                <span class="tool-tag">Wazuh</span>
             </p>
         </header>
 
         <section id="overview">
             <h2 class="section-title">Project Overview</h2>
-            <p>Successfully deployed a full-stack <strong>Wazuh dashboard (SIEM/XDR)</strong> environment within a virtualized Ubuntu instance on a Windows host. This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Beyond deployment, I utilized the environment to perform comprehensive vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu, and Linux Mint).</p>
+            <p> In order to simulate an enterprise security operations environment and apply cybersecurity concepts, I installed and self-hosted a SIEM dashboard in my home technology lab. I enrolled multiple machines from my network into a centralized Wazuh manager — just as a SOC analyst would monitor a diverse fleet of corporate machines. By deliberately choosing endpoints - or "agents" - with different operating systems, hardware profiles, and usage patterns, I was able to generate varied, realistic security telemetry and practice a <strong>full cybersecurity analyst workflow: detection, triage, remediation, and reporting.</strong> </p>
+
+            <p> With three active agents producing continuous event data, I could observe how security postures differ across operating system families, map observed behaviors, and benchmark each endpoint against industry compliance frameworks — all from a single dashboard. I limited the initial number of agents to ensure a manageable amount of data. Three machines from my home network were enrolled as Wazuh agents — including physical laptops and a production-style virtual server - to represent the variety of machines found at a company. </p>
+            
+            <p>This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Using several AI models as a learning partner, I successfully deployed a full-stack <strong>Wazuh SIEM dashboard</strong> within a virtualized Ubuntu server instance on a Windows host (using VMWare). After deployment, I performed comprehensive <strong>vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu Server, and Linux Mint)</strong>.</p>
         </section>
 
-        <section id="technical-details">
+        <section id="triage">
+            <h2 class="section-title">Enterprise Vulnerability Triage</h2>
+            <p>I used the SIEM dashboard to conduct a deep-dive analysis of the three agent hosts. After the successful deployment of Wazuh, I immediately began receiving detailed information on my network. At first I was alarmed at how many notifications I received. However, using AI as a learning partner to augment my cybersecurity certifications and training, I quickly began to learn the difference between theoretical analysis and what takes place when working with machines generating actual data - especially in my own network. My goal was to move beyond "scan and patch" and into professional risk categorization.</p>
+            
+            <div class="method-box">
+                <h4>CVE Pattern Analysis</h4>
+                <p>I began by trianging and prioritizing vulnerabilities. I discovered that the majority were kernel-level vulnerabilities published within 14 days of the assessment, representing the "Patching Gap" where official vendor updates were not yet available.</p>
+
+                <h4>The Triage Framework</h4>
+                <ul>
+                    <li><strong>Vendor-Pending:</strong> Acknowledged vulnerabilities awaiting official patch release.</li>
+                    <li><strong>Deferred/Ignored:</strong> Older vulnerabilities deferred by the vendor due to stability risks.</li>
+                    <li><strong>Targeted Remediation:</strong> Specific fixes requiring manual installation outside of general upgrades.</li>
+                </ul>
+            </div>
+        </section>
+        
+        
+               </header>
+
+        <section id="overview">
+            <h2 class="section-title">Threat Hunting & Alert Analysis</h2>
+            <p>Using Wazuh's <strong>Threat Hunting </strong> module, I monitored real-time event streams across all agents. The dashboard surfaced alert groups spanning syslog, authentication events, rule triggers, configuration change detections, and <strong>systemd</strong> activity. Events were correlated against PCI DSS requirements, giving each alert a compliance context alongside its technical one. </p>
+
+            <p><strong>The Vulnerability Detection module </strong> scanned all enrolled agents and surfaced a combined picture of the environment's CVE exposure. Across the lab, a variety of potential vulnerabilities were identified. The practical challenge was not just finding them, but reasoning about what to do with each category.</p>
+            
+            <p>I quickly learned that a raw vulnerability count means little without context. The most important insight from this project was that a high number of "High" findings is not automatically a sign of poor maintenance — it often reflects the Patching Gap: the window between when a CVE is published and when a vendor releases an official fix. Learning this distinction was fundamental to my objective of creating a simulated cybersecurity environment where I could apply real-life concepts.</p>
+        </section>
+
+        <section id="challenges">
+            <h2 class="section-title">Technical Challenges</h2>
+            <div class="case-study">
+                <p>This was actually the second time I had installed the Wazuh SIEM dashboard within my network. Initially, I'd deployed Wazuh using a Linux host machine utilizing KVM-based virtualization. I was able to login and even begin gathering data on my network. However, I eventually realized that VMWare on my Windows host was a more stable option in this case. Although this was an obstacle at first, it gave me a reason to gain additional experience with virtualization on a Windows host and VMWare. Previously, I'd almost exclusively used a Linux host/KVM for this type of project.</p>
+            </div>
+        </section>
+        
+                <section id="technical-details">
             <h2 class="section-title">Technical Implementation</h2>
             <p>The deployment followed a containerized architecture to ensure scalability and isolation of security services.</p>
             
             <div class="terminal-text">
                 [Status] Initializing Wazuh Stack... <br>
                 [System] Indexer, Manager, and Dashboard Containers: UP <br>
-                [Network] Mapping Port 443 -> 5601... Success.
+                [Network] Mapping Ports... Success.
             </div>
 
             <div class="method-box">
@@ -131,41 +171,26 @@
             </div>
         </section>
 
-        <section id="triage">
-            <h2 class="section-title">Enterprise Vulnerability Triage</h2>
-            <p>After deployment, I conducted a deep-dive analysis of a Linux-based server (Ubuntu 24.04). The goal was to move beyond "scan and patch" and into professional risk categorization.</p>
-            
-            <div class="method-box">
-                <h4>CVE Pattern Analysis</h4>
-                <p>Began by trianging and prioritizing vulnerabilities. I discovered that the majority were kernel-level vulnerabilities published within 14 days of the assessment, representing the "Patching Gap" where official vendor updates were not yet available.</p>
-
-                <h4>The Triage Framework</h4>
-                <ul>
-                    <li><strong>Vendor-Pending:</strong> Acknowledged vulnerabilities awaiting official patch release.</li>
-                    <li><strong>Deferred/Ignored:</strong> Older vulnerabilities deferred by the vendor due to stability risks.</li>
-                    <li><strong>Targeted Remediation:</strong> Specific fixes requiring manual installation outside of general upgrades.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="challenges">
-            <h2 class="section-title">Key Challenge</h2>
-            <div class="case-study">
-                <p><strong>The Hurdle:</strong> Encountered a v4.9.0-specific bug where certificate generation scripts created empty directories instead of valid <code>.pem</code> files, alongside Linux file ownership conflicts (UID 10001) that prevented the Docker daemon from reading keys.</p>
-                <p><strong>The Fix:</strong> Used low-level diagnostic tools (<code>ss</code>, <code>curl</code>, <code>docker inspect</code>) to identify the root cause. I corrected the directory structures manually and adjusted permission sets to ensure the Wazuh services could initialize successfully.</p>
-            </div>
-        </section>
-
         <section id="outcomes">
             <h2 class="section-title">Outcomes & Skills</h2>
             <ul>
                 <li><strong>Critical Triage:</strong> Demonstrated the ability to distinguish between actionable risks and "acceptable" risks based on vendor patch availability.</li>
-                <li><strong>SIEM Proficiency:</strong> Gained advanced experience in Wazuh for inventory management, SCA (Security Configuration Assessment), and agent-to-manager troubleshooting.</li>
+                <li><strong>SIEM Proficiency:</strong> Gained realistic experience in inventory management, SCA (Security Configuration Assessment), and agent-to-manager troubleshooting.</li>
                 <li><strong>Risk Management:</strong> Shifted focus to <strong>Compensating Controls</strong> (SCA hardening) when official software fixes were unavailable.</li>
                 <li><strong>Using AI as a partner:</strong> Used multiple AI models to help me learn and navigate some of the more technical areas I was not familiar with going into this project. With AI's assistance, I was able to learn and complete the project much more quickly compared to working strictly from technical documentation.</li>
             </ul>
+            
+            <h2 class="section-title">Final Results & Summary</h2>
 
-            <p><strong>Final Result:</strong> Established a fully functional, hardened SIEM environment with visibility into 200+ initial security alerts, providing immediate actionable data for ongoing system hardening.</p>
+            <p>Established a fully functional SIEM dashboard in my home environment, generating valuable ongoing cybersecurity experience, as well as a more secure home network.</p>
+            
+            <p>This project was designed to mirror what an SOC analyst actually does on the job: not just install a tool, but use it to monitor a real (if small) network, hunt for threats, assess compliance posture, and reason carefully about risk. By spanning three different endpoint types — a Windows workstation, a Linux desktop, and an Ubuntu virtual server — my SIEM dashboard generated the kind of varied, realistic security data that helped me further develop my understanding of cybersecurity. 
+            </p>
+
+            <p>The most lasting takeaway was operational: I learned that vulnerability management is not a "zero-out game". I gained a taste of what it's like to formulate an accurate, defensible picture of risk — and that requires knowing the difference between a vulnerability you can fix today, one you must wait on, and even some risk you may choose to accept. From installing a SIEM dashboard on a virtual server to monitoring my network and actually implementing security patches, this was a valuable (and ongoing) experience. 
+            </p>             
+            
+            
         </section>
     </main>
 
