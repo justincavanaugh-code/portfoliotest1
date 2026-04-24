@@ -254,6 +254,21 @@
                 
         </section>
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/CVE0.jpg" alt="Redacted example of an actual SVE"
+    style="width: 100%; max-width: 700px;"
+    onclick="document.getElementById('lightbox-vm').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
+    Redacted example of an actual CVE — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for MoodleVM -->
+<div id="lightbox-vm" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-vm').classList.remove('active')">&times;</span>
+  <img src="images/CVE0.jpg" alt="Redacted CVE">
+</div>
+        
         <section id="challenges">
             <h2 class="section-title">Key Challenge</h2>
             <div class="case-study">
