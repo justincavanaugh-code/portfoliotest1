@@ -113,6 +113,19 @@
             <p>This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Using several AI models as a learning partner, I successfully deployed a full-stack <strong>Wazuh SIEM dashboard</strong> within a virtualized Ubuntu server instance on a Windows host (using VMWare). After deployment, I performed comprehensive <strong>vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu Server, and Linux Mint)</strong>.</p>
         </section>
 
+       <!-- Image with caption -->
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/WazuhBlueLogin.jpg" alt="Wazuh Login Screen" style="width: 100%; max-width: 700px;" onclick="document.getElementById('lightbox').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
+      Wazuh SIEM dashboard login screen — click to expand</figcaption>
+</figure>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
+  <img src="images/WazuhBlueLogin.jpg" alt="SIEM login page">
+</div>
+
         <section id="triage">
             <h2 class="section-title">Enterprise Vulnerability Triage</h2>
             <p>I used the SIEM dashboard to conduct a deep-dive analysis of the three agent hosts. After the successful deployment of Wazuh, I immediately began receiving detailed information on my network. At first I was alarmed at how many notifications I received. However, using AI as a learning partner to augment my cybersecurity certifications and training, I quickly began to learn the difference between theoretical analysis and what takes place when working with machines generating actual data - especially in my own network. My goal was to move beyond "scan and patch" and into professional risk categorization.</p>
@@ -127,6 +140,22 @@
                     <li><strong>Deferred/Ignored:</strong> Older vulnerabilities deferred by the vendor due to stability risks.</li>
                     <li><strong>Targeted Remediation:</strong> Specific fixes requiring manual installation outside of general upgrades.</li>
                 </ul>
+
+                <figure style="text-align: center; margin: 20px 0 0 0;">
+  <img src="images/CVE0.jpg" alt="Redacted CVE example"
+    style="width: 100%; max-width: 700px; border-radius: 4px; border: 1px solid #ddd;"
+    onclick="document.getElementById('lightbox-plugins').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+    Redacted example of an actual corrected CVE — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for AdminPlugins -->
+<div id="lightbox-plugins" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-plugins').classList.remove('active')">&times;</span>
+  <img src="images/CVE0.jpg" alt="Redacted CVE example">
+</div>
+                
             </div>
         </section>
         
@@ -190,6 +219,20 @@
             <p>The most lasting takeaway was operational: I learned that vulnerability management is not a "zero-out game". I gained a taste of what it's like to formulate an accurate, defensible picture of risk — and that requires knowing the difference between a vulnerability you can fix today, one you must wait on, and even some risk you may choose to accept. From installing a SIEM dashboard on a virtual server to monitoring my network and actually implementing security patches, this was a valuable (and ongoing) experience. 
             </p>             
             
+            <figure style="text-align: center; margin: 20px 0;">
+  <img src="images/WazuhAgents.jpg" alt="Wazuh Agents overview"
+    style="width: 100%; max-width: 700px;"
+    onclick="document.getElementById('lightbox-vm').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
+    Wazuh agents overview dashboard — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for MoodleVM -->
+<div id="lightbox-vm" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-vm').classList.remove('active')">&times;</span>
+  <img src="images/WazuhAgents.jpg" alt="Wazuh Agents overview">
+</div>
             
         </section>
     </main>
