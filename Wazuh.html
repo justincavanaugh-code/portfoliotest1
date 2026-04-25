@@ -215,17 +215,19 @@
             <p>I quickly learned that a raw vulnerability count means little without context. The most important insight from this project was that a high number of "High" findings is not automatically a sign of poor maintenance — it often reflects the Patching Gap: the window between when a CVE is published and when a vendor releases an official fix. Learning this distinction was fundamental to my objective of creating a simulated cybersecurity environment where I could apply real-life concepts.</p>
         </section>
 
-        <!-- Image with caption -->
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/WazuhOverview.jpg" alt="Wazuh Overview screen" style="width: 100%; max-width: 700px;" onclick="document.getElementById('lightbox').classList.add('active')">
-  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">The Wazuh overview dasbboard — click to expand</figcaption>
+  <img src="images/WazuhOverview.jpg" alt="Wazuh Overview screen"
+    style="width: 100%; max-width: 700px;"
+    onclick="document.getElementById('lightbox-overview').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
+    The Wazuh overview dashboard — click to expand
+  </figcaption>
 </figure>
 
-<!-- Lightbox Overlay -->
-<div id="lightbox" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
+<div id="lightbox-overview" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-overview').classList.remove('active')">&times;</span>
   <img src="images/WazuhOverview.jpg" alt="Wazuh Overview dashboard">
-     </div>
+</div>
 
         <section id="challenges">
             <h2 class="section-title">Technical Challenges</h2>
@@ -280,20 +282,19 @@
                 <li><strong>Using AI as a partner:</strong> Used multiple AI models to help me learn and navigate some of the more technical areas I was not familiar with going into this project. With AI's assistance, I was able to learn and complete the project much more quickly compared to working strictly from technical documentation.</li>
             </ul>
 
-             <figure style="text-align: center; margin: 20px 0;">
+<figure style="text-align: center; margin: 20px 0;">
   <img src="images/ConfigAssess.jpg" alt="Configuration Assessment screen"
     style="width: 100%; max-width: 700px;"
-    onclick="document.getElementById('lightbox-vm').classList.add('active')">
+    onclick="document.getElementById('lightbox-configassess').classList.add('active')">
   <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
     Configuration Assessment screen — click to expand
   </figcaption>
 </figure>
 
-<!-- Lightbox for MoodleVM -->
-<div id="lightbox-vm" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox-vm').classList.remove('active')">&times;</span>
+<div id="lightbox-configassess" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-configassess').classList.remove('active')">&times;</span>
   <img src="images/ConfigAssess.jpg" alt="Configuration Assessment screen">
-</div>    
+</div> 
             
             <h2 class="section-title">Final Results & Summary</h2>
 
