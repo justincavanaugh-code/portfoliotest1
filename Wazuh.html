@@ -113,16 +113,19 @@
             <p>This project involved configuring a containerized security architecture including the Wazuh Indexer, Manager, and Dashboard. Using several AI models as a learning partner, I successfully deployed a full-stack <strong>Wazuh SIEM dashboard</strong> within a virtualized Ubuntu server instance on a Windows host (using VMWare). After deployment, I performed comprehensive <strong>vulnerability assessments and triage across a multi-platform lab (Windows 10, Ubuntu Server, and Linux Mint)</strong>.</p>
         </section>
 
-       <!-- Image with caption -->
+<!-- Image with caption -->
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/WazuhBlueLogin.jpg" alt="Wazuh Login Screen" style="width: 100%; max-width: 700px;" onclick="document.getElementById('lightbox').classList.add('active')">
+  <img src="images/WazuhBlueLogin.jpg" alt="Wazuh Login Screen" 
+       style="width: 100%; max-width: 700px; cursor: pointer;" 
+       onclick="document.getElementById('lightbox-login').classList.add('active')">
   <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
-      Wazuh SIEM dashboard login screen — click to expand</figcaption>
+    Wazuh SIEM dashboard login screen — click to expand
+  </figcaption>
 </figure>
 
 <!-- Lightbox Overlay -->
-<div id="lightbox" class="lightbox-overlay" onclick="this.classList.remove('active')">
-  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
+<div id="lightbox-login" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-login').classList.remove('active')">&times;</span>
   <img src="images/WazuhBlueLogin.jpg" alt="SIEM login page">
 </div>
 
