@@ -203,6 +203,17 @@
             <p>I quickly learned that a raw vulnerability count means little without context. The most important insight from this project was that a high number of "High" findings is not automatically a sign of poor maintenance — it often reflects the Patching Gap: the window between when a CVE is published and when a vendor releases an official fix. Learning this distinction was fundamental to my objective of creating a simulated cybersecurity environment where I could apply real-life concepts.</p>
         </section>
 
+        <!-- Image with caption -->
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/WazuhOverview.jpg" alt="Wazuh Overview screen" style="width: 100%; max-width: 700px;" onclick="document.getElementById('lightbox').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">The Wazuh overview dasbboard — click to expand</figcaption>
+</figure>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
+  <img src="images/WazuhOverview.jpg" alt="Wazuh Overview dashboard">
+
         <section id="challenges">
             <h2 class="section-title">Technical Challenges</h2>
             <div class="case-study">
@@ -231,6 +242,21 @@
                 <p>Configured Docker bridge networking and specific port mappings to allow secure remote access from the host browser to the virtualized internal dashboard.</p>
             </div>
         </section>
+
+        <figure style="text-align: center; margin: 20px 0;">
+  <img src="images/WazuhVM.jpg" alt="Wazuh Virtual Machine"
+    style="width: 100%; max-width: 700px;"
+    onclick="document.getElementById('lightbox-vm').classList.add('active')">
+  <figcaption style="font-size: 0.85em; color: gray; margin-top: 6px;">
+    VMWare settings for the Wazuh virtual machine — click to expand
+  </figcaption>
+</figure>
+
+<!-- Lightbox for MoodleVM -->
+<div id="lightbox-vm" class="lightbox-overlay" onclick="this.classList.remove('active')">
+  <span class="lightbox-close" onclick="document.getElementById('lightbox-vm').classList.remove('active')">&times;</span>
+  <img src="images/WazuhVM.jpg" alt="Virtual Machine for Wazuh">
+</div>
 
         <section id="outcomes">
             <h2 class="section-title">Outcomes & Skills</h2>
