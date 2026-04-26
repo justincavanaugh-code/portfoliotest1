@@ -3,147 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Projects | Home Lab Research</title>
+    <title>Working with AI | Justin Cavanaugh Portfolio</title>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --text-color: #334155;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --accent-color: #64748b;
-        }
-
+        /* Base Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            color: #333;
             margin: 0;
-            padding: 40px 20px;
+            display: flex;
+            background-color: #f9f9f9;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            box-sizing: border-box;
         }
-
-        header {
-            border-bottom: 3px solid var(--primary-color);
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-        }
-
-        h1 {
-            color: #1e293b;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .summary-box {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .project-section {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .project-title {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.4rem;
-        }
-
-        .tech-stack {
-            font-weight: bold;
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
             display: block;
-            text-transform: uppercase;
+            margin: 15px 0;
+            transition: color 0.3s;
+        }
+        .sidebar a:hover { color: white; }
+        
+        .main-content {
+            margin-left: 290px;
+            padding: 40px 60px;
+            max-width: 900px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
 
-        ul {
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+
+        /* Timeline Styling */
+        .timeline {
+            position: relative;
+            margin-top: 20px;
             padding-left: 20px;
         }
-
-        li {
-            margin-bottom: 10px;
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+            border-left: 2px solid #3498db;
+            padding-left: 25px;
         }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3498db;
+            border: 3px solid white;
+        }
+        .step-label {
+            font-weight: bold;
+            color: #3498db;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+        .timeline-content h4 { margin: 5px 0; color: #2c3e50; }
 
-        .conclusion {
-            font-style: italic;
-            color: #475569;
-            margin-top: 40px;
+        /* Component Boxes */
+        .case-study {
+            background: #f4f7f6;
+            border-left: 5px solid #27ae60;
             padding: 20px;
-            border-top: 1px solid #cbd5e1;
+            margin: 20px 0;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Technical Projects</h1>
-        <p><strong>Home Lab Research</strong></p>
-    </header>
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#sequence">The AI Journey</a>
+        <a href="#hosting">Self-Hosting</a>
+        <a href="#webdev">Web Development</a>
+        <a href="#summary">Outcomes</a>
+    </nav>
 
-    <section class="summary-box">
-        <p><strong>Summary:</strong> After completing Google’s Cybersecurity professional certification, I was inspired to continue my research into areas beyond the program’s scope, including network architecture, virtualization, web development and server management. As a result, I created a home testing lab to continue my technology-related learning and research. Below is a summary of these projects:</p>
-    </section>
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Working with AI</h1>
+            <p><strong>Focus:</strong> AI as a Learning & Problem-Solving Partner</p>
+        </header>
 
-    <article class="project-section">
-        <h2 class="project-title">Personal Lab & Security Research Environment</h2>
-        <span class="tech-stack">Virtualization, Ubuntu Server and Kali Linux</span>
-        <ul>
-            <li>Engineered a multi-VM lab to simulate enterprise environments for penetration testing, web development and network security research.</li>
-            <li>Deployed OWASP Juice Shop on a dedicated server to practice identifying vulnerabilities using Burp Suite application and Kali Linux tools installed on virtual machines.</li>
-            <li>Used virtual machines to simulate “red versus blue team” pen-testing and defense.</li>
-            <li>Repurposed legacy hardware by performing an operating system migration to Linux.</li>
-            <li>Converted a modern laptop to Linux-based Pop!_OS after reaching hardware limits, enabling additional virtual machine capacity.</li>
-            <li>Gained extensive experience with the command line interface (CLI) through R&D projects.</li>
-            <li>Researched and implemented RAM upgrades on multiple hardware units to improve lab capabilities.</li>
-        </ul>
-    </article>
+        <section id="overview">
+            <h2 class="section-title">Overview</h2>
+            <p>Many of the projects highlighted in this portfolio were accomplished with the assistance of AI. I learned a great deal about how to utilize LLMs like Gemini, ChatGPT, CoPilot, and Claude as a partner problem-solving partner. In many cases, AI became my teacher/coach, especially when learning and applying unfamiliar technical concepts. Perhaps the most valuable lesson I learned was how to work extensively with AI to take on unanticipated challenges.</p>
+        </section>
 
-    <article class="project-section">
-        <h2 class="project-title">Full-Stack Web Infrastructure (LEMP)</h2>
-        <span class="tech-stack">Linux, Nginx server, MySQL and PHP</span>
-        <ul>
-            <li>Developed a custom portfolio website from scratch, utilizing GitHub Pages.</li>
-            <li>Architected and maintained a LEMP stack on multiple virtual Ubuntu servers to host dynamic, database-driven websites and applications.</li>
-            <li>Created and tested several MySQL databases in multiple virtual environments.</li>
-            <li>Integrated third-party REST APIs into several test websites.</li>
-            <li>Utilized AI-assisted development to optimize efficiency and troubleshoot complex scripts.</li>
-            <li>Published test projects and websites to multiple virtual servers.</li>
-            <li>Created and tested a mobile app using VS Code, Node.js and Android Studio.</li>
-        </ul>
-    </article>
+        <section id="sequence">
+            <h2 class="section-title">The "Story" of My AI-Assisted Projects</h2>
+            <p>Below is a summary of how I utilized AI to enhance and complete many of the projects in this portfolio:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="step-label">Step 01</span>
+                    <div class="timeline-content">
+                        <h4>The Journey Begins</h4>
+                        <p>This journey began when I completed Google’s Professional Cybersecurity certification program, which sparked my interest in networking, Linux, the command line, virtualization, and web development.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 02</span>
+                    <div class="timeline-content">
+                        <h4>My First Operating System Conversion</h4>
+                        <p>With technical guidance from Gemini, I converted a decade-old Windows laptop into my first Linux machine. This allowed me to begin experimenting with the command line interface and, eventually, virtualization.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 03</span>
+                    <div class="timeline-content">
+                        <h4>Introduction to Virtual Machines</h4>
+                        <p>I used the Linux laptop as a host to create my first virtual machines (using KVM), again with Gemini’s technical assistance. This project included installing my first virtual server (Ubuntu LTS), which led me to begin thinking about creating my own home lab.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 04</span>
+                    <div class="timeline-content">
+                        <h4>AI's Role: First Steps Toward My Home Lab</h4>
+                        <p>I eventually reached the technical limits of the older laptop when I attempted to use KVM to run “red versus blue” cybersecurity tests. At this point, I was working with multiple AI models for invaluable technical advice.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 05</span>
+                    <div class="timeline-content">
+                        <h4>Modern Hardware Migration with AI</h4>
+                        <p>I installed a more advanced Linux distro (Pop!_OS) on a modern Lenovo ThinkPad. With multiple AI models as my technical advisors, the conversion was successful, setting the stage for me to create a true home lab.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 06</span>
+                    <div class="timeline-content">
+                        <h4>AI as a Critical Partner in Building a Home Lab</h4>
+                        <p>AI provided critical technical input as I created dozens of virtual machines for cybersecurity testing, as well as virtual instances of Ubuntu Server dedicated to hosting dynamic websites (LEMP and LAMP-based).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 07</span>
+                    <div class="timeline-content">
+                        <h4>Interesting Detours and AI's Role</h4>
+                        <p>I converted two additional end-of-life machines to Linux. An obsolute Windows machine was reborn as a valuable air-gapped cybersecurity testing station. Also, converting an end-of-life Chromebook required heavy collaboration with Gemini as I ventured into hardware/motherboard modifications—an unfamiliar area where I needed significant assistance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-label">Step 08</span>
+                    <div class="timeline-content">
+                        <h4>Self-Hosting and AI's Role</h4>
+                        <p>Most recently, AI served as my technical advisor as I realized I needed to use VMWare on my Windows laptop for specific projects. This allowed me to expand my understanding of virtualization from both Windows and Linux perspectives. This also set the stage for my move into self-hosting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <article class="project-section">
-        <h2 class="project-title">Self-Hosted Learning Management System</h2>
-        <span class="tech-stack">Moodle, Database Management</span>
-        <ul>
-            <li>Deployed and configured a Moodle LMS instance, managing the full lifecycle from server provisioning to administrative setup.</li>
-            <li>Created and published diverse content types, including full curricula, H5P, and SCORM-based courses.</li>
-            <li>Explored and tested various authoring tools to generate interactive content.</li>
-        </ul>
-    </article>
+        <section id="hosting">
+            <h2 class="section-title">Self-hosting an LMS and SIEM dashboard</h2>
+            <div class="case-study">
+                <p>Two of the projects highlighted in this portfolio involved self-hosting applications within my virtual network. To help me gain hands-on experience with cybersecurity concepts, I installed a SIEM dashboard (Wazuh) on my home network. I also deployed and configured an LMS (Moodle) to help me learn, practice, and apply L&D concepts. These projects combined many of the individual concepts I had learned and applied previously. AI's advice continued to be critical.</p>
+                <p><strong>Collaborative Approach:</strong> I used Gemini, ChatGPT, CoPilot, and Claude to assist me in the complex process of deploying and configuring these self-hosted projects.</p>
+            </div>
+        </section>
 
-    <footer class="conclusion">
-        <p><strong>Reflections:</strong> I originally conceived of creating a home lab to provide hands-on experience with the concepts I’d been introduced to during the cybersecurity program. While this goal was accomplished, one of the most valuable aspects was overcoming unanticipated challenges.</p>
-        <p>I’ve learned additional ways to work with AI as a learning and problem-solving partner, especially when working through highly technical concepts that were initially unfamiliar.</p>
-    </footer>
-</div>
+        <section id="webdev">
+            <h2 class="section-title">AI-Assisted Web and Application Development</h2>
+            <p><strong>Linux, Apache/Nginx, MariaDB/MySQL, and PHP</strong></p>
+            <ul>
+                <li><strong>Portfolio Development:</strong> This portfolio is the first website I coded and published myself. Several AI models were incredibly helpful in identifying GitHub as the best deployment method and assisting with helping me write the source code.</li>
+                <li><strong>Infrastructure:</strong> AI helped me configure and code several websites in my virtual network, providing experience with both LEMP and LAMP stacks.</li>
+                <li><strong>App Development:</strong> I created and tested several APIs, used AI-assisted development to troubleshoot complex scripts, and developed a mobile app using VS Code, Node.js, and Android Studio.</li>
+            </ul>
+        </section>
 
+        <section id="summary">
+            <h2 class="section-title">Summary and Outcomes</h2>
+            <p>The use of AI as a learner partner and technical advisor was critical in the success of these projects, which can be viewed in greater detail throughout this portfolio. My ability to solve complex and unfamiliar problems has been enhanced by learning to collaborate with AI models more effectively. These projects helped me fully integrate AI into my problem-solving workflow.</p>
+        </section>
+
+    </main>
 </body>
 </html>
