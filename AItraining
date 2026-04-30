@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Virtual Workshop | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS maintained from model page for visual consistency */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .highlight-box {
+            background: #eaf4fb;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .outcome-list {
+            list-style: none;
+            padding: 0;
+        }
+        .outcome-list li {
+            padding: 8px 0 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .outcome-list li:last-child {
+            border-bottom: none;
+        }
+        .outcome-list li::before {
+            content: "✓ ";
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#scope">Scope & Approach</a>
+        <a href="#design">Instructional Design</a>
+        <a href="#governance">Leadership & Governance</a>
+        <a href="#testing">Testing & Measurement</a>
+        <a href="#outcomes">Outcomes</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>AI Training: Design, Testing, and Enterprise Rollout</h1>
+            <p><strong>Role:</strong> Instructional Designer, Facilitator, Business Learning Specialist</p>
+            <p><strong>Tools & Methods:</strong>
+                <span class="tool-tag">Microsoft Copilot Chat</span>
+                <span class="tool-tag">Virtual Facilitation</span>
+                <span class="tool-tag">Survey Design</span>
+                <span class="tool-tag">Iterative Development</span>
+                <span class="tool-tag">AI Governance</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>
+                I led the instructional design, development and delivery of an enterprise-wide AI training program aimed at helping leaders and team members build confidence using AI in their day-to-day work. The workshop was intentionally designed as a low-pressure, practical introduction to AI, focused on real but low-risk tasks rather than technical depth or "wow" demonstrations.
+            </p>
+        </section>
+
+        <section id="scope">
+            <h2 class="section-title">Project Scope & Approach</h2>
+            <p>
+                This project required close collaboration with a variety of SMEs, especially members of the Innovation team. We partnered with SMEs to ensure content direction, examples, and prompting approaches aligned with organizational AI principles and responsible-use expectations. We also ensured that team members understood the critical importance of using the company's approved AI model (Microsoft Copilot). Development was highly iterative and included multiple review cycles to refine messaging around what Copilot is and is not, establish appropriate guardrails, and ensure consistent positioning across learning materials.
+            </p>
+
+            <div class="method-box">
+                <h4>Core Design Principles</h4>
+                <p>To support adult learning and reduce apprehension around AI, the session emphasized:</p>
+                <ul>
+                    <li><strong>Psychological safety and experimentation</strong> — creating a low-stakes environment for trying something new</li>
+                    <li><strong>AI as a tool for generating an "80% head start"</strong>, not as the producer of a final product</li>
+                    <li><strong>Responsible use reminders</strong> around accuracy review, judgment, and appropriate information use</li>
+                    <li><strong>Natural-language prompting</strong> rather than rigid frameworks or "perfect prompts"</li>
+                    <li><strong>Job-specific utility</strong>: whenever possible, activities were customized for the session-specific audience</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="design">
+            <h2 class="section-title">Instructional Design & Content Development</h2>
+            <p>
+                With these principles in place, the workshop experience was intentionally designed to balance clarity, practice, and real-time support in a live virtual environment. We developed a facilitated learning experience that blended short concept explanations, live demonstrations, and structured hands-on practice.
+            </p>
+
+            <div class="method-box">
+                <h2>Key Design Elements</h2>
+
+                <h4>Prompting Framework</h4>
+                <p>A plain-language prompting framework was embedded into demos and practice time, giving learners a memorable, approachable tool for structuring their AI interactions without feeling constrained by rigid rules. (As a proprietary element, the specific framework is not included in this summary.) </p>
+
+                <h4>Normalized Iteration</h4>
+                <p>Intentional use of imperfect examples helped normalize trial-and-error, reinforcing that experimenting and refining prompts is expected and preferable way to learn.</p>
+
+                <h4>Dual Facilitation Model</h4>
+                <p>Dual facilitation roles allowed one facilitator to manage live demos while the other handled real-time learner questions concurrently, ensuring a smooth experience even as participants explored at different paces.</p>
+
+                <h4>Reusable Facilitation Assets</h4>
+                <p>Reusable facilitator notes and demo banks were developed to support future sessions and varied audiences, building long-term scalability into the design from the start.</p>
+            </div>
+        </section>
+
+        <section id="governance">
+            <h2 class="section-title">Leadership Partnership & Governance Alignment</h2>
+            <p>
+                Throughout development, we consulted regularly with leadership and key stakeholders to ensure the training aligned with organizational standards, AI governance expectations, and internal policies for responsible use. These check-ins helped validate positioning, refine examples, and ensure consistent messaging around accuracy review, appropriate data handling, and the role of human judgment in the use of AI. We also worked with Organizational Development to align the content to an introductory eLearning module.
+            </p>
+
+            <div class="highlight-box">
+                <p>This collaboration ensured the final workshop <strong>balanced innovation with trust</strong>, providing teammates with clear, practical ways to use Copilot confidently within established organizational guardrails.</p>
+            </div>
+        </section>
+
+        <section id="testing">
+            <h2 class="section-title">Testing, Measurement & Continuous Improvement</h2>
+            <p>
+                Testing and measurement were treated as integral parts of the workshop design. Before organization-wide delivery, the workshop was piloted with test audiences, including the Business Learning Solutions team. These "test runs" were used to validate pacing, clarify instructions, assess the amount and placement of practice time, and refine transitions between facilitators and activities.
+            </p>
+
+            <div class="method-box">
+                <h4>Pre-Session Assessments</h4>
+                <p>Captured participants' prior experience, comfort levels, and intended use cases — allowing facilitators to tailor the pace of the session as well as examples and prompts to each unique audience before the session began.</p>
+
+                <h4>Post-Session Surveys</h4>
+                <p>Measured learning outcomes, relevance, and confidence applying AI to job-specific tasks, while also capturing qualitative feedback. Insights from both surveys were used to iteratively adjust content, pacing, and facilitation strategies as the program expanded.</p>
+            </div>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes & Skills Demonstrated</h2>
+
+            <p>The series was positioned as part of a broader AI/Copilot learning program and augmented by follow-up resources, job aids, and additional sessions. (The design of this workshop also set the stage for intermediate and advanced training programs.) Participants left each session with:</p>
+
+            <ul class="outcome-list">
+                <li><strong>Increased comfort</strong> experimenting with prompting in realistic contexts</li>
+                <li><strong>Clearer understanding</strong> of responsible, effective AI use within organizational expectations</li>
+                <li><strong>At least one concrete task</strong> they could immediately try in their work</li>
+            </ul>
+            
+            <p><strong>What This Project Demonstrates:</strong> Extensive experience designing enterprise-ready AI learning, partnering across teams to meet governance requirements, and translating emerging technology into approachable, practical learning experiences — built around measurement, iteration, and real-world learner needs.</p>        
+
+            <div class="case-study">
+                <p><strong>NOTE:</strong> no company-specific proprietary information, images or content was referenced in this project summary.</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
