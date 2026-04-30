@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NU Advance Micro-Credentialing | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .highlight-box {
+            background: #eaf4fb;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .credential-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .pillar-card {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+        .pillar-card .icon {
+            font-size: 1.6em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* === VIDEO EMBED === */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 24px 0 8px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 8px;
+        }
+        .video-caption {
+            font-size: 0.88em;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* === EXTERNAL LINK BUTTON === */
+        .external-link-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            margin-top: 12px;
+            transition: background 0.2s ease;
+        }
+        .external-link-btn:hover {
+            background: #2176ae;
+            color: white;
+        }
+        .external-link-btn::after {
+            content: " ↗";
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#learner-experience">Learner Experience</a>
+        <a href="#admin-experience">Administrative Side</a>
+        <a href="#impact">Strategic Impact</a>
+        <a href="#outcomes">Outcomes & Reflection</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>NU Advance Micro-Credentialing Program</h1>
+            <p><strong>Role:</strong> Implementation Lead</p>
+            <p><strong>Tools &amp; Platforms:</strong>
+                <span class="tool-tag">Micro-credentials</span>
+                <span class="tool-tag">Canvas</span>
+                <span class="tool-tag">LTI Integration</span>
+                <span class="tool-tag">NU Advance</span>
+                <span class="tool-tag">LMS</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>This project involved designing and implementing a micro-credentialing program as part of the University of Nebraska's re-launch of their non-credit learning management system, <strong>NU Advance</strong>. The initiative was driven by a belief that verifiable, portable digital credentials could meaningfully serve non-traditional learners pursuing professional development.</p>
+            <p>The core goal was to support micro-learning opportunities while ensuring that credentials are <strong>verifiable, portable, and meaningful in professional contexts</strong>. The program was built on focus group research that helped identify what learners and employers actually needed from a credentialing system.</p>
+
+            <div class="highlight-box">
+                <p><strong>Note:</strong> This summary was designed as a walkthrough of the system from two perspectives — the learner experience and the administrative/issuer side. All visuals, including the demonstration video below, use test data or my individual account.</p>
+            </div>
+            
+        </section>
+
+        <section id="learner-experience">
+            <h2 class="section-title">Learner Experience</h2>
+            <p>The <strong>"Badgr"</strong> platform (since re-branded) was selected because it closely aligned with criteria identified in focus group research. Stakeholders emphasized that credentials needed to be verifiable, digitally authentic, and under the control of the learner — not locked to the issuing institution. Rich metadata was also a priority, enabling credentials to be meaningfully shared with employers.</p>
+
+            <div class="method-box">
+                <h4>The Badger Backpack</h4>
+                <p>The learner experience centered on the <strong>Badgr Backpack</strong> — a personal dashboard where earned badges are stored and managed. Learners can organize badges by issuer, search by name, and access full verification details. Each badge displays not just its visual mark, but also the issuing organization, award date, recipient, and embedded metadata describing exactly what was done to earn the credential.</p>
+
+                <h4>Structured Pathways &amp; Stackable Learning</h4>
+                <p>Badges can be grouped into structured pathways that visually represent the steps required to achieve a larger credential. Learners complete required components — sometimes alongside optional elements — and once all requirements are met, the final badge is awarded. This model supports stackable learning and progressive skill development, which is especially relevant for professionals seeking targeted competencies outside of full degree programs.</p>
+
+                <h4>Sharing &amp; Professional Visibility</h4>
+                <p>Learners have significant flexibility in how they use their credentials. Badges can be downloaded, printed as certificates, shared via direct link, embedded on websites, or posted directly to professional platforms like LinkedIn. The LinkedIn integration is particularly strong — with a few clicks, a learner can add a credential to their profile with the issuer name, issue date, and a verification link included automatically.</p>
+
+                <h4>Portability &amp; Learner Control</h4>
+                <p>Badges remain under learner control. Users can associate multiple email addresses with their account, so if they leave an employer or lose access to an institutional email, their credentials remain accessible. This portability was an important point of emphasis in designing the system and aligns with the needs of lifelong learners navigating evolving career paths.</p>
+            </div>
+        </section>
+
+        <section id="admin-experience">
+            <h2 class="section-title">Administrative &amp; Issuer Experience</h2>
+            <p>From the administrative side, the system offers comparable clarity and control. The admin dashboard provides high-level analytics — including how many badges have been awarded, how often they've been shared, and how recipients are distributing them — supporting program evaluation and strategic decision-making.</p>
+
+            <div class="method-box">
+                <h4>Organizational Structure</h4>
+                <p>Issuers can be structured to mirror institutional needs. At a university, that might mean separate issuers by campus, college, or department; within a business, different departments or training teams can issue specific credentials. Each issuer manages its own badges and pathways while remaining part of the larger ecosystem.</p>
+
+                <h4>Badge Creation</h4>
+                <p>Creating a badge involves defining its visual identity, description, issuing authority, earning criteria, and optional expiration settings. Administrators can also include narrative descriptions and additional evidence links, ensuring that credentials represent documented achievement rather than symbolic recognition. Initial badge designs were created using Badger's built-in design tool, and as the program grew, we collaborated with marketing to develop custom designs.</p>
+
+                <h4>Award Methods</h4>
+                <p>The platform supports multiple issuance workflows:</p>
+                <ul>
+                    <li><strong>Individual awards</strong> — Admins or instructors can enter a learner's information and send a direct notification. This approach works well for smaller cohorts or customized achievements.</li>
+                    <li><strong>Bulk CSV upload</strong> — The platform provides a template to eliminate formatting guesswork. Once uploaded and mapped, recipients automatically receive notification emails to claim their badge.</li>
+                    <li><strong>QR codes / claim codes</strong> — Administrators generate a code, embed it in a course, and control validity period or claim limits. Codes can be edited or deactivated at any time, balancing convenience with security.</li>
+                </ul>
+
+                <h4>Canvas LMS Integration</h4>
+                <p>The system integrated directly with the Canvas LMS via an LTI app. Instructors can add the Badger app to their courses, enabling badge issuance based on defined completion criteria. Implementation can occur at the course level or at a sub-account level, depending on the governance strategy. A key strength of the system was the ability to grant various degrees of permissions to instructors and issuers, ensuring appropriate oversight at every level.</p>
+            </div>
+        </section>
+
+        <section id="impact">
+            <h2 class="section-title">Strategic Impact</h2>
+            <p>The broader objective of this implementation was to reduce barriers to credential attainment for non-traditional learners. Traditional degree pathways require significant time and financial commitments. Micro-credentials, particularly within a non-credit LMS like NU Advance, offer targeted skill acquisition in shorter timeframes.</p>
+
+            <p>By combining micro-learning with verifiable digital badging, the institution can provide credentials that are:</p>
+
+            <div class="credential-pillars">
+                <div class="pillar-card"><span class="icon">🎯</span>Professionally Relevant</div>
+                <div class="pillar-card"><span class="icon">🔗</span>Publicly Shareable</div>
+                <div class="pillar-card"><span class="icon">📋</span>Metadata-Rich</div>
+                <div class="pillar-card"><span class="icon">🔒</span>Secure &amp; Verifiable</div>
+                <div class="pillar-card"><span class="icon">🎒</span>Learner-Controlled</div>
+            </div>
+
+            <p>Focus group feedback consistently emphasized professional development, rapid skill demonstration, and credible validation. This system directly addresses those priorities. Learners gain portable, stackable credentials while employers gain transparency into what those credentials represent — and administrators maintain oversight, analytics, and flexibility throughout.</p>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes &amp; Reflection</h2>
+            <ul>
+                <li><strong>Stakeholder Research &amp; Requirements Gathering:</strong> Used focus group data to identify the core priorities that shaped platform selection and system design.</li>
+                <li><strong>Cross-Functional Collaboration:</strong> Coordinated across academic departments, marketing, and technology teams to implement badge design, LMS integration, and institutional governance structures.</li>
+                <li><strong>LMS Integration:</strong> Managed Canvas LTI configuration and established permission structures appropriate for a multi-issuer university environment.</li>
+                <li><strong>Curriculum &amp; Instructional Design:</strong> Designed learning pathways that support stackable, progressive credentialing aligned with professional development goals.</li>
+                <li><strong>Program Governance:</strong> Established issuance workflows and administrative controls that balanced flexibility with oversight and data integrity.</li>
+            </ul>
+
+            <div class="case-study">
+                <p><strong>A Personal Note:</strong> Years after helping re-launch NU Advance, I completed several of its professional certificate programs myself — and was proud to say the system really was a great experience as a learner. I truly believe the system met its goal of allowing professionals to add and showcase valuable skills. Being able to evaluate the work from both sides of the experience made this one of the most meaningful projects I've been a part of.</p>
+            </div>
+
+            <p><strong>Final Result:</strong> The integration of digital micro-credentials into NU Advance created a scalable framework for delivering meaningful credentials within a non-credit environment — one that aligns with the evolving expectations of professional learners and workforce development, and that I'm genuinely proud to have helped build.</p>
+            
+                        <!-- LINK to YT video -->
+<a href="https://youtu.be/2C4H2UwVD2g" target="_blank" rel="noopener noreferrer" class="external-link-btn">
+    View my narrated "highlight video" about this project!
+</a>
+
+            <!-- NU ADVANCE LIVE SITE LINK -->
+            <a href="https://online.nebraska.edu/non-credit-courses/" target="_blank" rel="noopener noreferrer" class="external-link-btn">
+                Visit the Live NU Advance Platform!
+            </a>
+
+        </section>
+    </main>
+
+</body>
+</html>
