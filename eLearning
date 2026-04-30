@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLearning & LMS Content | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        /* Video embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Project cards grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .project-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .project-card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .project-card h4 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+            font-size: 1em;
+        }
+        .project-card p {
+            margin: 0 0 10px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .timestamp-link {
+            display: inline-block;
+            font-size: 0.8em;
+            color: #3498db;
+            text-decoration: none;
+            background: #eaf4fd;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+        .timestamp-link:hover { background: #3498db; color: white; }
+
+        /* TOC note */
+        .toc-note {
+            background: #eaf4fd;
+            border-left: 4px solid #3498db;
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.92em;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#showcase-video">Showcase Video</a>
+        <a href="#projects">Featured Projects</a>
+        <a href="#technical-details">Technical Implementation</a>
+        <a href="#challenges">Challenges & Solutions</a>
+        <a href="#outcomes">Outcomes & Skills</a>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="project-header">
+            <h1>eLearning & LMS Content Development</h1>
+            <p><strong>Role:</strong> Instructional Designer &amp; Multimedia Producer</p>
+            <p><strong>Tools:</strong>
+                <span class="tool-tag">Articulate 360</span>
+                <span class="tool-tag">Camtasia</span>
+                <span class="tool-tag">Captivate</span>
+                <span class="tool-tag">LMS</span>
+                <span class="tool-tag">SharePoint</span>
+                <span class="tool-tag">Office 365</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>
+                This page showcases a collection of training content I produced for a former employer, when I served as a lead instructional designer for the company's IT division. </p>
+            <p>     
+                The work spanned a wide range of subjects including Microsoft/Office 365 training, Agile methodology and enterprise onboarding. The formats included real-time facilitation, eLearning, multimedia-based content as well as examples of my work as an LMS admin. Each project required end-to-end ownership including: needs analysis, script writing, video editing, eLearning authoring and publishing to the company's learning management system and SharePoint environment(s).
+            </p>
+            <p>
+                Originally produced as a single "highlight video", the content has been re-imagined below as a series of quick, project-specific chapters.
+            </p>
+        </section>
+
+
+
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <p>Below is a summary of the individual projects featured in the showcase reel, with timestamps linking to specific topics.</p>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <h4>🖥️ LMS Management</h4>
+                    <p>An overview of the learning management system content I built, organized, and published for internal training use.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=96" target="_blank">▶ 1:36 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>💻 CEO Feature: Help Desk</h4>
+                    <p>A creative, scenario-based training video using humor and storytelling to engage learners regarding using the IT Help Desk.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=204" target="_blank">▶ 3:24 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>📋 Life of a Claim</h4>
+                    <p>A training video that guides employees through the full claims lifecycle using humor as a "hook".</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=391" target="_blank">▶ 6:31 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>🛠️ Code Deployment Training</h4>
+                    <p>A curriculum covering key workflows in the code deployment process utilitzing a narrative thread to add interest.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=511" target="_blank">▶ 8:31 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>⚡ Agile Training</h4>
+                    <p>A module introducing employees to a company's Agile principles and methodologies; built as part of an enterprise-wide onboarding program.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=690" target="_blank">▶ 11:30 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>🎙️ "Radio Voice"</h4>
+                    <p>A program designed to present technical content to a primarily non-technical audience. This project demonstrates a range of multimedia techniques.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=785" target="_blank">▶ 13:05 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>☁️ Office 365, WFH & LMS</h4>
+                    <p>This section summarizes a full training program designed to foster end-user adoption of Office 365, as well as projects related to WFH capabilities and an LMS migration.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=828" target="_blank">▶ 13:48 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>📁 SharePoint Admin</h4>
+                    <p>This section provides a quick summary of how my role as a SharePoint admin helped shape the team's content, within and outside of the LMS.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=918" target="_blank">▶ 15:18 in video</a>
+                </div>
+
+                <div class="project-card">
+                    <h4>🎬 Leadership: Year in Review</h4>
+                    <p>An annual recap video produced for the IT department, combining motion graphics, narration, and data storytelling.</p>
+                    <a class="timestamp-link" href="https://www.youtube.com/watch?v=0Bfie2_QM6Q&t=976" target="_blank">▶ 16:18 in video</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="technical-details">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p>Each project followed a consistent production pipeline, adapted to the specific format and audience:</p>
+
+            <div class="method-box">
+                <h4>Phase 1: Analysis & Scripting</h4>
+                <p>Worked with subject matter experts (SMEs) and stakeholders to define learning objectives, target audience, and appropriate modality. Produced detailed scripts, storyboards and POCs as part of the pre-production process.</p>
+
+                <h4>Phase 2: eLearning & Multimedia Production</h4>
+                <p>Recorded professional voiceover narration, edited screen recordings and animations in Camtasia, and assembled final video(s) or interactive content using authoring tools such Captivate or Articulate 360.</p>
+
+                <h4>Phase 3: LMS Publishing</h4>
+                <p>Packaged videos and/or completed eLearning courses (often utilizing SCORM) and published them to the company's LMS. Configured enrollment/asssignment rules, completion tracking, and reporting. Hosted supplemental video content via SharePoint and embedded links within course shells.</p>
+            </div>
+        </section>
+
+        <section id="challenges">
+            <h2 class="section-title">Key Factors</h2>
+            <div class="case-study">
+                <p><strong>Change Management:</strong> Many of the projects required building training for tools and processes that were simultaneously being rolled out company-wide — meaning content had to be produced before workflows were fully stabilized. Change Management was a major element in most of these projects.</p>
+                <p><strong>Agile Methodology:</strong> Adopted a modular content design approach, keeping individual topics short and self-contained so modules could be updated or swapped without rebuilding entire courses. Close collaboration with SMEs during active rollouts allowed for iterative revisions. Worked with pilot cohorts to generate feedback that shaped the final published versions. Agile/rapid development became especially crucial during the months after the company transitioned to a heavy work-from-home context in March of 2020.</p>
+            </div>
+        </section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes & Skills</h2>
+            <ul>
+                <li><strong>End-to-End Production:</strong> Owned the full instructional design lifecycle from needs analysis and scripting through production, QA, and LMS publishing.</li>
+                <li><strong>Multimedia Creation:</strong> applied professional narration, screen capture, animation, and video editing skills across a diverse library of training content.</li>
+                <li><strong>WFH/Office 365 Adoption:</strong> Built adoption-focused learning content for Office 365 (including SharePoint and Microsoft Teams). These programs helped facilitate a smooth transition to a sudden shift to a 100% work-from-home model in March of 2020.</li>
+                <li><strong>Agile:</strong> Translated Agile/Scrum concepts into accessible, engaging learning opportunities for technical and non-technical audiences. Agile methodologies were also a major component of my team's content development process, which championed an ADDIE-centric approach.</li>
+                <li><strong>Storytelling for Learning:</strong> Applied creative, scenario-based techniques (such as the "Laptop Drop" and "Life of a Claim" modules) to increase learner engagement with otherwise dry procedural content.</li>
+                <li><strong>LMS migration:</strong> I helped lead the transitiion to a new enterprise learning management system. This included participating in the new LMS selection process and migrating/transferring content to the new system.</li>
+            </ul>
+
+            <p><strong>Outcomes:</strong> A robust library of training content spanning methodology, enterprise initiatives, and eLearning programs — all produced in-house, accelerating production time and increasing agility for new training initiatives.</p>
+        </section>
+        
+             <section id="Note">
+            <div class="case-study">
+                   <p><strong>NOTE:</strong> All content used with permission; all proprietary content redacted where applicable.</p>
+            </div>
+        </section>   
+        
+
+    </main>
+
+</body>
+</html>
