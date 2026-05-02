@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Simulation Training | Justin Cavanaugh Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS maintained from model page for visual consistency */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+        }
+        .sidebar a:hover { color: white; }
+
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            font-style: italic;
+        }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        /* Video embed styling */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-caption {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Portfolio</h2>
+        <a href="index.html">← Back to Projects</a>
+        <hr>
+        <a href="#overview">Overview</a>
+        <a href="#demo">Demo Video</a>
+        <a href="#technical-details">Technical Details</a>
+        <a href="#challenges">Challenges & Solutions</a>
+        <a href="#outcomes">Outcomes</a>
+    </nav>
+
+    <main class="main-content">
+        <header class="project-header">
+            <h1>Building a Simulation-Based Training Program</h1>
+            <p><strong>Role:</strong> Instructional Designer &amp; eLearning Developer</p>
+            <p><strong>Tools:</strong>
+                <span class="tool-tag">Articulate Storyline 360</span>
+                <span class="tool-tag">Instructional Design</span>
+                <span class="tool-tag">SME Collaboration</span>
+                <span class="tool-tag">Multimedia</span>
+                <span class="tool-tag">Technical Training</span>
+            </p>
+        </header>
+
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>This project addressed a major need for my employer. New hires and first-time users of critical internal applications (CRM, banking, etc.) faced a significant onboarding challenge: the organization was unable to provide access to test or sandbox environments at scale. As a result, the very first time learners interacted with these systems was in the live production environment — a situation with obvious risks. In addition, the organization was about to begin a merger, so the need to provide hands-on training - urgently and at scale - had become more urgent.</p>
+            <p>As a result, I created a series of fully interactive, simulation-based training programs built in Articulate Storyline 360. The course gave learners hands-on, realistic practice with the most important workflows — without ever touching the live system. Moreover, it alleviated the need for IT to devote resources to granting access to test environments.</p>
+            <p>In partnership with SMEs and leaders, scenarios were selected that represented the most error-prone and high-stakes tasks, especially for new users. I worked closely with SMEs to record these scenarios and produce them into fully realized simulations using Articulate 360. After several rounds of iteration, development and testing, the simulations were packaged as programs and published to the company's LMS.</p> 
+            
+        </section>
+
+
+        <section id="technical-details">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p>The simulations were built using Storyline 360's screen recording capability in <strong>Try Mode</strong>, which makes the experience fully interactive rather than a passive watch-and-observe exercise. Each simulation was recorded with a subject matter expert, then extensively reviewed and customized before being published. The course was structured with consistent navigation and a persistent on-screen reference guide throughout each simulation.</p>
+
+            <div class="method-box">
+                <h4>Phase 1: Scenario Selection with SMEs</h4>
+                <p>Rather than attempting to cover all application functionality, I worked closely with leaders and subject matter experts to identify and prioritize the scenarios that mattered most — the tasks new users performed most frequently and where errors were most likely to occur. This needs-analysis approach included finding and consulting performance-based metrics, ensuring the training had immediate, practical impact.</p>
+
+                <h4>Phase 2: Recording &amp; Storyline Customization</h4>
+                <p>Simulations were recorded in partnership with SMEs and imported into Storyline 360 as Try Mode interactions. However, to meet the requirements of the project, we needed to customize several default Storyline 360 elements. Each simulation was individually reviewed and customized accordingly:</p>
+                <ul>
+                    <li><strong>Hint captions suppressed:</strong> Storyline's default hover-to-reveal hints were disabled. Instead, I added clear, customized instructions that were provided upfront so learners didn't have to hunt for answers.</li>
+                    <li><strong>Correct layer suppressed:</strong> When learners clicked the right answer, the simulation simply advanced — no interruption, reinforcing the feeling of actually using the system.</li>
+                    <li><strong>Incorrect layer customized:</strong> Instead of Storyline's generic error message, I added custom a feedback layer so that learners received specific, targeted feedback explaining what to do differently.</li>
+                    <li><strong>Hotspots expanded:</strong> Click targets were customized beyond Storyline 360 defaults to accommodate natural variation and reduce unintentional incorrect responses.</li>
+                    <li><strong>Timed highlight boxes:</strong> On slides where additional guidance was needed, highlight boxes and callouts appeared after a strategically-timed delay — giving learners a moment to attempt the step independently before the hint surfaced.</li>
+                </ul>
+
+                <h4>Phase 3: Typing &amp; Input Strategy</h4>
+                <p>A deliberate design decision was made around keyboard input. Since the primary learning objective was <em>navigation and process knowledge</em> (knowing where to click and how to move through the system), not data entry, most text fields were configured to simulate typing automatically when the learner clicked "Next." This prevented Storyline's strict text-matching logic from flagging correct-but-differently-formatted entries as wrong. For fields where the specific value entered genuinely mattered, live typing was preserved with appropriate validation.</p>
+
+                <h4>Phase 4: Player &amp; Navigation Customization</h4>
+                <p>The Storyline player was customized to reinforce the simulation experience. The default sidebar menu — which would have shown slide-by-slide labels and distracted from immersion — was replaced by using the <strong>Glossary panel</strong> as a persistent, non-changing reference guide. This gave learners a constant reminder of the scenario criteria without cluttering the simulation itself. Full-screen mode was also enabled and encouraged via on-screen instructions. Each simulation received a custom intro slide and exit slide, and previous/next navigation was configured contextually.</p>
+            </div>
+        </section>
+       
+
+<section id="challenges">
+    <h2 class="section-title">Key Challenges &amp; Solutions: Additional Details</h2>
+
+    <div class="case-study">
+        <p><strong>The Hurdle — Balancing Guidance vs. Discovery:</strong> Providing too much up-front guidance reduced realistic simulation; providing too little guidance left learners stuck and frustrated. Finding the right balance was an ongoing consideration in the design, testing and iteration stages.</p>
+        <p><strong>The Fix:</strong> Hint captions were authored but initially suppressed via a Storyline trigger rather than deleted outright. This meant they could be re-enabled in a future iteration if learner feedback indicated they would be helpful — without rebuilding from scratch. Timed highlight boxes offered a middle ground: learners got a moment to attempt each step independently, and contextual guidance appeared only after a brief interval.</p>
+    </div>
+
+    <div class="case-study" style="margin-top: 20px;">
+        <p><strong>The Hurdle — No Test Environment Available:</strong> The core constraint driving this project was the organization's inability to grant learners access to a non-production instance of the application, and not just for the application(s) in this project. This is a common enterprise challenge and left new hires with no safe space to practice before going live.</p>
+        <p><strong>The Fix:</strong> By building high-fidelity simulations in Storyline 360's Try Mode, the course effectively became its own sandbox. Learners could click, make mistakes, receive targeted feedback, and repeat scenarios as many times as needed — all without any risk to live data or workflows. This also alleviated resource requests on IT and served as a training model for other applications with similar resource-driven limitations.</p>
+    </div>
+
+    <div class="case-study" style="margin-top: 20px;">
+        <p><strong>The Hurdle — Storyline's Text Input Limitations:</strong> Storyline 360's Try Mode requires an exact text match for typed input fields. Any deviation — a different value, clicking away before pressing Enter, an extra space — would trigger an incorrect response, even when the learner's actual entry would have been valid in the real system.</p>
+        <p><strong>The Fix:</strong> We made sure to confirm with leaders and SMEs that it was acceptable to minimize learner typing throughout the simulations. For most text fields, learners were instructed to click "Next" and the simulation would auto-populate the field on their behalf. This kept the focus on the navigation skills that mattered, and eliminated false negatives from the typing engine. The few fields where precise input was genuinely important retained live typing with clear, tested instructions.</p>
+    </div>
+
+</section>
+
+        <section id="outcomes">
+            <h2 class="section-title">Outcomes &amp; Skills Demonstrated</h2>
+            <ul>
+                <li><strong>Teaching Storyline:</strong>Another long-term "win" was that I took the opportunity to teach other members of my team how to use Storyline 360, with a focus on re-creating the workflow we'd built for these types of simulations. As a result, members of my team were empowered as a result of this project.</li>
+                <li><strong>Needs Analysis &amp; SME Partnership:</strong> Worked directly with subject matter experts to identify the highest-impact scenarios, grounding the course in actual performance gaps rather than a general feature tour. The desired result was achieved: a measurable decrease in common and high-stakes errors.</li>
+                <li><strong>Articulate Storyline 360 — Advanced Development:</strong> Applied deep knowledge of Storyline's trigger logic, layer management, hotspot configuration, and player customization to build a polished, production-ready course.</li>
+                <li><strong>Instructional Design Decision-Making:</strong> Made deliberate choices around typing strategy, hint suppression, feedback specificity, and navigation design — all tied back to clear learning objectives that focused on the most critical skills.</li>
+                <li><strong>Iterative &amp; Maintainable Design:</strong> Built the course with future revisions in mind (e.g., preserving suppressed hints as re-enableable triggers rather than deleting them), reducing rework cost for future iterations.</li>
+                <li><strong>Learner Experience Focus:</strong> Prioritized a smooth, immersive simulation feel — suppressing disruptive correct-answer interruptions, providing persistent on-screen criteria, and encouraging full-screen viewing to maximize realism.</li>
+            </ul>
+
+            <p><strong>Final Result:</strong> The course launched to strong learner feedback and measurably improved the onboarding experience for new hires. Users arrived at the live application already familiar with its core workflows, reducing errors and accelerating time-to-productivity in a context where no other safe practice environment existed.</p>
+        </section>
+        
+                        <section id="demo">
+            <h2 class="section-title">Demo Video</h2>
+            <p>The video below provides a narrarted walk through of the development process and key design decisions described in this summary. <strong>Please note</strong>: even though all visible information was created solely for testing purposes, a significant amount of on-screen content has been intentionally obscured to remove proprietary information. The version of the course in the video was copied and re-created specifically to demonstrate significant development and design decisions. It was created and shared with permission.</p>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/SwjcHbD4XWs"
+                    title="Application Simulation Training Course Demo"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-caption">A walkthrough of one of the simulation courses, including a demonstration of a scenario and an overview of Storyline customizations.</p>
+        </section>
+        
+    </main>
+    
+
+</body>
+</html>
