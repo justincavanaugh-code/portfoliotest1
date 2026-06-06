@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eLearning Proof of Concept</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    .course-container {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .progress-container {
+        width: 100%;
+        background-color: #ddd;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 25px;
+        width: 0%;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        line-height: 25px;
+        transition: width 0.4s ease;
+    }
+
+    .question {
+        margin-bottom: 30px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .feedback {
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    .correct {
+        color: #0a7a2f;
+    }
+
+    .incorrect {
+        color: #c62828;
+    }
+
+    .peer-comparison {
+        margin-top: 10px;
+        color: #0d47a1;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    button {
+        padding: 8px 16px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .leader-highlight {
+        background-color: #fff8c4;
+        font-weight: bold;
+    }
+
+    #results {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #eef7ee;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .stats-panel {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .stat-box {
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="course-container">
+
+    <h1>Sample eLearning Course</h1>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-panel">
+        <div class="stat-box">
+            <strong>Current Score</strong><br>
+            <span id="score">0</span> / 3
+        </div>
+
+        <div class="stat-box">
+            <strong>Questions Completed</strong><br>
+            <span id="completedCount">0</span> / 3
+        </div>
+    </div>
+
+    <!-- Leaderboard -->
+<div class="question">
+
+    <h2>Leaderboard</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Learner</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+
+        <tbody id="leaderboardBody">
+        </tbody>
+    </table>
+
+    <div id="rankingInfo" style="margin-top:15px;">
+        <strong>Your percentile:</strong>
+        <span id="percentile">Top 100%</span>
+        <br>
+        <strong>Standing:</strong>
+        <span id="standing">
+            Complete a question to see your ranking.
+        </span>
+    </div>
+
+</div>
+
+    <!-- Question 1 -->
+    <div class="question">
+        <h3>Question 1</h3>
+
+        <p>What color is the sky on a clear day?</p>
+
+        <label>
+            <input type="radio" name="q1" value="correct">
+            Blue
+        </label><br>
+
+        <label>
+            <input type="radio" name="q1" value="wrong">
+            Green
+        </label><br>
+
+        <label>
+            <input type="radio" name="q1" value="wrong">
+            Purple
+        </label><br>
+
+        <button onclick="submitQuestion(1)">
+            Submit Answer
+        </button>
+
+        <div id="feedback1" class="feedback"></div>
+        <div id="comparison1" class="peer-comparison"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <h3>Question 2</h3>
+
+        <p>How many days are in a week?</p>
+
+        <label>
+            <input type="radio" name="q2" value="wrong">
+            5
+        </label><br>
+
+        <label>
+            <input type="radio" name="q2" value="correct">
+            7
+        </label><br>
+
+        <label>
+            <input type="radio" name="q2" value="wrong">
+            10
+        </label><br>
+
+        <button onclick="submitQuestion(2)">
+            Submit Answer
+        </button>
+
+        <div id="feedback2" class="feedback"></div>
+        <div id="comparison2" class="peer-comparison"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <h3>Question 3</h3>
+
+        <p>Which of the following is a mammal?</p>
+
+        <label>
+            <input type="radio" name="q3" value="wrong">
+            Eagle
+        </label><br>
+
+        <label>
+            <input type="radio" name="q3" value="correct">
+            Dolphin
+        </label><br>
+
+        <label>
+            <input type="radio" name="q3" value="wrong">
+            Shark
+        </label><br>
+
+        <button onclick="submitQuestion(3)">
+            Submit Answer
+        </button>
+
+        <div id="feedback3" class="feedback"></div>
+        <div id="comparison3" class="peer-comparison"></div>
+    </div>
+
+    <!-- Final Results -->
+    <div id="results">
+        <h2>Course Complete</h2>
+
+        <p>
+            Your Final Score:
+            <strong>
+                <span id="finalScore"></span> / 3
+            </strong>
+        </p>
+
+        <div id="completionMessage"></div>
+    </div>
+
+</div>
+
+<script>
+
+let score = 0;
+let completedQuestions = 0;
+
+const learnerName = "You";
+
+const answered = {
+    1: false,
+    2: false,
+    3: false
+};
+
+const fictionalLearners = [
+    { name: "Alex", score: 3 },
+    { name: "Jordan", score: 3 },
+    { name: "Taylor", score: 2 },
+    { name: "Morgan", score: 2 },
+    { name: "Casey", score: 1 }
+];
+
+const questionData = {
+
+    1: {
+        correctFeedback:
+            "Correct. The sky appears blue because molecules in Earth's atmosphere scatter shorter blue wavelengths of sunlight more efficiently than other colors.",
+        incorrectFeedback:
+            "Incorrect. The sky generally appears blue because atmospheric particles scatter blue light more strongly than other wavelengths.",
+        peerComparison:
+            "88% of learners correctly identify Blue as the answer."
+    },
+
+    2: {
+        correctFeedback:
+            "Correct. The standard calendar week consists of seven days.",
+        incorrectFeedback:
+            "Incorrect. Most modern calendars define a week as seven days.",
+        peerComparison:
+            "94% of learners correctly answer 7."
+    },
+
+    3: {
+        correctFeedback:
+            "Correct. Dolphins are mammals because they breathe air, maintain body temperature, and nurse their young.",
+        incorrectFeedback:
+            "Incorrect. Dolphins are mammals. Eagles are birds and sharks are fish.",
+        peerComparison:
+            "76% of learners correctly identify Dolphin."
+    }
+};
+
+updateLeaderboard();
+
+function submitQuestion(questionNumber) {
+
+    if (answered[questionNumber]) {
+        return;
+    }
+
+    const selectedAnswer =
+        document.querySelector(
+            `input[name="q${questionNumber}"]:checked`
+        );
+
+    if (!selectedAnswer) {
+        alert("Please select an answer.");
+        return;
+    }
+
+    const feedbackElement =
+        document.getElementById(
+            `feedback${questionNumber}`
+        );
+
+    const comparisonElement =
+        document.getElementById(
+            `comparison${questionNumber}`
+        );
+
+    if (selectedAnswer.value === "correct") {
+
+        score++;
+
+        feedbackElement.textContent =
+            questionData[questionNumber].correctFeedback;
+
+        feedbackElement.className =
+            "feedback correct";
+
+    } else {
+
+        feedbackElement.textContent =
+            questionData[questionNumber].incorrectFeedback;
+
+        feedbackElement.className =
+            "feedback incorrect";
+    }
+
+    comparisonElement.textContent =
+        questionData[questionNumber].peerComparison;
+
+    answered[questionNumber] = true;
+
+    completedQuestions++;
+
+    updateScore();
+    updateProgress();
+    updateLeaderboard();
+
+    if (completedQuestions === 3) {
+        showResults();
+    }
+}
+
+function updateScore() {
+
+    document.getElementById("score").textContent =
+        score;
+
+    document.getElementById("completedCount").textContent =
+        completedQuestions;
+}
+
+function updateProgress() {
+
+    const percent =
+        Math.round(
+            (completedQuestions / 3) * 100
+        );
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    progressBar.style.width =
+        percent + "%";
+
+    progressBar.textContent =
+        percent + "%";
+}
+
+function updateLeaderboard() {
+
+    const leaderboard =
+        [...fictionalLearners];
+
+    leaderboard.push({
+        name: learnerName,
+        score: score
+    });
+
+    leaderboard.sort(
+        (a, b) => b.score - a.score
+    );
+
+    const tbody =
+        document.getElementById(
+            "leaderboardBody"
+        );
+
+    tbody.innerHTML = "";
+
+    leaderboard.forEach((entry, index) => {
+
+        const row =
+            document.createElement("tr");
+
+        if (entry.name === learnerName) {
+            row.classList.add(
+                "leader-highlight"
+            );
+        }
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${entry.name}</td>
+            <td>${entry.score}</td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+function showResults() {
+
+    document.getElementById("results")
+        .style.display = "block";
+
+    document.getElementById("finalScore")
+        .textContent = score;
+
+    let message = "";
+
+    if (score === 3) {
+
+        message =
+            "<p><strong>Outstanding!</strong> You achieved a perfect score and matched the highest-performing learners.</p>";
+
+    } else if (score === 2) {
+
+        message =
+            "<p><strong>Great job!</strong> You performed better than most learners and remained competitive on the leaderboard.</p>";
+
+    } else if (score === 1) {
+
+        message =
+            "<p><strong>Good effort.</strong> Review the feedback provided for each question to strengthen your understanding.</p>";
+
+    } else {
+
+        message =
+            "<p><strong>Course completed.</strong> Consider reviewing the material and trying again to improve your score.</p>";
+    }
+
+    document.getElementById("completionMessage")
+        .innerHTML = message;
+}
+
+</script>
+
+</body>
+</html>
