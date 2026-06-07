@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gamified eLearning Demo</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    padding:30px;
+    background:#f4f6f8;
+}
+
+.slide{
+    display:none;
+}
+
+.slide.active{
+    display:block;
+}
+
+.slide-card{
+
+    max-width:1000px;
+    margin:auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    margin-top:0;
+}
+
+.progress-container{
+    width:100%;
+    height:30px;
+
+    background:#ddd;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:25px;
+}
+
+.progress-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#28a745;
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:bold;
+
+    transition:.4s;
+}
+
+.question-text{
+
+    font-size:1.2rem;
+
+    margin-bottom:25px;
+}
+
+.option-button{
+
+    display:block;
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:12px;
+
+    background:#007bff;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+}
+
+.option-button:hover{
+    background:#0056b3;
+}
+
+.feedback{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-radius:8px;
+}
+
+.correct{
+    background:#d4edda;
+    color:#155724;
+}
+
+.incorrect{
+    background:#f8d7da;
+    color:#721c24;
+}
+
+.continue-btn{
+
+    margin-top:15px;
+
+    padding:12px 18px;
+
+    background:#28a745;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+}
+
+.leaderboard{
+
+    margin-top:30px;
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:10px;
+}
+
+th,td{
+
+    border:1px solid #ddd;
+
+    padding:10px;
+
+    text-align:left;
+}
+
+th{
+    background:#efefef;
+}
+
+.highlight{
+    background:#fff3cd;
+    font-weight:bold;
+}
+
+input,select{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:15px;
+}
+
+.start-btn{
+
+    padding:12px 20px;
+
+    background:#007bff;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+}
+
+.summary-score{
+
+    font-size:1.3rem;
+
+    margin-bottom:20px;
+
+    font-weight:bold;
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    background:#e9ecef;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div class="slide active" id="slide0">
+
+    <div class="slide-card">
+
+        <h1>Gamified eLearning Demo</h1>
+
+        <p>
+            Enter your information to begin.
+        </p>
+
+        <input
+            type="text"
+            id="learnerName"
+            placeholder="Enter your first name">
+
+        <select id="experience">
+
+            <option value="">
+                Select Prior Knowledge
+            </option>
+
+            <option value="Beginner">
+                Beginner
+            </option>
+
+            <option value="Moderate">
+                Moderate
+            </option>
+
+            <option value="Expert">
+                Expert
+            </option>
+
+        </select>
+
+        <button
+            class="start-btn"
+            onclick="startCourse()">
+
+            Start Course
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- QUESTION 1 -->
+
+<div class="slide" id="slide1">
+
+    <div class="slide-card">
+
+        <div class="progress-container">
+            <div class="progress-bar">0%</div>
+        </div>
+
+        <h2>Question 1 of 4</h2>
+
+        <div class="question-text">
+            Which planet is known as the Red Planet?
+        </div>
+
+        <div id="q1">
+
+            <button class="option-button"
+                onclick="answerQuestion(1,'Mars',true)">
+                Mars
+            </button>
+
+            <button class="option-button"
+                onclick="answerQuestion(1,'Venus',false)">
+                Venus
+            </button>
+
+        </div>
+
+        <div id="feedback1"></div>
+
+        <div class="leaderboard">
+
+            <h3>Live Leaderboard</h3>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+
+                <tbody class="leaderboardBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- QUESTION 2 -->
+
+<div class="slide" id="slide2">
+
+    <div class="slide-card">
+
+        <div class="progress-container">
+            <div class="progress-bar">25%</div>
+        </div>
+
+        <h2>Question 2 of 4</h2>
+
+        <div class="question-text">
+            What is 5 + 7?
+        </div>
+
+        <div id="q2">
+
+            <button class="option-button"
+                onclick="answerQuestion(2,'12',true)">
+                12
+            </button>
+
+            <button class="option-button"
+                onclick="answerQuestion(2,'13',false)">
+                13
+            </button>
+
+        </div>
+
+        <div id="feedback2"></div>
+
+        <div class="leaderboard">
+            <h3>Live Leaderboard</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody class="leaderboardBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- QUESTION 3 -->
+
+<div class="slide" id="slide3">
+
+    <div class="slide-card">
+
+        <div class="progress-container">
+            <div class="progress-bar">50%</div>
+        </div>
+
+        <h2>Question 3 of 4</h2>
+
+        <div class="question-text">
+            Which animal is a mammal?
+        </div>
+
+        <div id="q3">
+
+            <button class="option-button"
+                onclick="answerQuestion(3,'Dolphin',true)">
+                Dolphin
+            </button>
+
+            <button class="option-button"
+                onclick="answerQuestion(3,'Shark',false)">
+                Shark
+            </button>
+
+        </div>
+
+        <div id="feedback3"></div>
+
+        <div class="leaderboard">
+            <h3>Live Leaderboard</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody class="leaderboardBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- QUESTION 4 -->
+
+<div class="slide" id="slide4">
+
+    <div class="slide-card">
+
+        <div class="progress-container">
+            <div class="progress-bar">75%</div>
+        </div>
+
+        <h2>Question 4 of 4</h2>
+
+        <div class="question-text">
+            Which language runs in a web browser?
+        </div>
+
+        <div id="q4">
+
+            <button class="option-button"
+                onclick="answerQuestion(4,'JavaScript',true)">
+                JavaScript
+            </button>
+
+            <button class="option-button"
+                onclick="answerQuestion(4,'SQL',false)">
+                SQL
+            </button>
+
+        </div>
+
+        <div id="feedback4"></div>
+
+        <div class="leaderboard">
+            <h3>Live Leaderboard</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody class="leaderboardBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FINAL SLIDE -->
+
+<div class="slide" id="slide5">
+
+    <div class="slide-card">
+
+        <h1>Course Complete</h1>
+
+        <div id="finalReport"></div>
+
+        <h2>Final Leaderboard</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+
+            <tbody class="leaderboardBody"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+let learner = "";
+let experienceLevel = "";
+let score = 0;
+let completedQuestions = 0;
+let currentSlide = 0;
+
+let learnerAnswers = [];
+
+const peerStats = {
+
+    1:{correctAnswer:"Mars",peerCorrectRate:"82%"},
+    2:{correctAnswer:"12",peerCorrectRate:"91%"},
+    3:{correctAnswer:"Dolphin",peerCorrectRate:"74%"},
+    4:{correctAnswer:"JavaScript",peerCorrectRate:"88%"}
+
+};
+
+const leaderboard = [
+
+    {name:"Alex",score:4},
+    {name:"Taylor",score:3},
+    {name:"Jordan",score:2},
+    {name:"Morgan",score:1},
+    {name:"Casey",score:0}
+
+];
+
+function startCourse(){
+
+    learner =
+        document.getElementById(
+            "learnerName"
+        ).value.trim();
+
+    experienceLevel =
+        document.getElementById(
+            "experience"
+        ).value;
+
+    if(!learner || !experienceLevel){
+
+        alert(
+            "Please enter your name and select a knowledge level."
+        );
+
+        return;
+    }
+
+    leaderboard.push({
+        name:learner,
+        score:0
+    });
+
+    updateLeaderboard();
+
+    showSlide(1);
+}
+
+function showSlide(number){
+
+    document
+        .querySelectorAll(".slide")
+        .forEach(slide=>{
+
+            slide.classList.remove("active");
+
+        });
+
+    document
+        .getElementById(
+            `slide${number}`
+        )
+        .classList.add("active");
+
+    currentSlide = number;
+}
+
+function answerQuestion(
+    questionNumber,
+    selectedAnswer,
+    isCorrect
+){
+
+    const question =
+        document.getElementById(
+            `q${questionNumber}`
+        );
+
+    if(
+        question.dataset.answered === "true"
+    ){
+        return;
+    }
+
+    question.dataset.answered = "true";
+
+    question
+        .querySelectorAll("button")
+        .forEach(btn=>{
+
+            btn.disabled = true;
+
+            btn.style.opacity = .6;
+
+        });
+
+    completedQuestions++;
+
+    if(isCorrect){
+        score++;
+    }
+
+    learnerAnswers.push({
+
+        question:questionNumber,
+        answer:selectedAnswer,
+        correct:isCorrect,
+        peerRate:
+            peerStats[questionNumber]
+            .peerCorrectRate
+
+    });
+
+    updateProgress();
+    updateLeaderboard();
+
+    const feedback =
+        document.getElementById(
+            `feedback${questionNumber}`
+        );
+
+    if(isCorrect){
+
+        feedback.innerHTML = `
+            <div class="feedback correct">
+                ✔ Correct!<br><br>
+                ${peerStats[questionNumber].peerCorrectRate}
+                of peers answered correctly.
+                <br>
+                <button class="continue-btn"
+                    onclick="nextSlide()">
+                    Continue
+                </button>
+            </div>
+        `;
+
+    }else{
+
+        feedback.innerHTML = `
+            <div class="feedback incorrect">
+                ✖ Incorrect.<br><br>
+                Correct Answer:
+                ${peerStats[questionNumber].correctAnswer}
+                <br>
+                <button class="continue-btn"
+                    onclick="nextSlide()">
+                    Continue
+                </button>
+            </div>
+        `;
+    }
+}
+
+function nextSlide(){
+
+    if(currentSlide < 4){
+
+        showSlide(
+            currentSlide + 1
+        );
+
+    }else{
+
+        buildFinalReport();
+
+        showSlide(5);
+    }
+}
+
+function updateProgress(){
+
+    const percentage =
+        Math.round(
+            (completedQuestions / 4) * 100
+        );
+
+    document
+        .querySelectorAll(".progress-bar")
+        .forEach(bar=>{
+
+            bar.style.width =
+                percentage + "%";
+
+            bar.textContent =
+                percentage + "%";
+
+        });
+}
+
+function updateLeaderboard(){
+
+    const learnerRecord =
+        leaderboard.find(
+            p => p.name === learner
+        );
+
+    if(learnerRecord){
+        learnerRecord.score = score;
+    }
+
+    leaderboard.sort(
+        (a,b)=>b.score-a.score
+    );
+
+    document
+        .querySelectorAll(
+            ".leaderboardBody"
+        )
+        .forEach(body=>{
+
+            body.innerHTML = "";
+
+            leaderboard.forEach(
+                (person,index)=>{
+
+                const row =
+                    document
+                    .createElement("tr");
+
+                if(
+                    person.name === learner
+                ){
+                    row.classList.add(
+                        "highlight"
+                    );
+                }
+
+                row.innerHTML = `
+                    <td>${index+1}</td>
+                    <td>${person.name}</td>
+                    <td>${person.score}</td>
+                `;
+
+                body.appendChild(row);
+
+            });
+
+        });
+}
+
+function getBadge(){
+
+    if(
+        experienceLevel === "Beginner"
+    ){
+        return "🌱 Explorer";
+    }
+
+    if(
+        experienceLevel === "Moderate"
+    ){
+        return "🚀 Practitioner";
+    }
+
+    return "🏆 Specialist";
+}
+
+function buildFinalReport(){
+
+    let html = `
+
+        <div class="badge">
+            ${getBadge()}
+        </div>
+
+        <div class="summary-score">
+            ${learner}
+            scored
+            ${score}/4
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Result</th>
+                    <th>Peer Correct %</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+    `;
+
+    learnerAnswers.forEach(answer=>{
+
+        html += `
+
+            <tr>
+
+                <td>
+                    Q${answer.question}
+                </td>
+
+                <td>
+                    ${answer.answer}
+                </td>
+
+                <td>
+                    ${
+                        answer.correct
+                        ? "Correct"
+                        : "Incorrect"
+                    }
+                </td>
+
+                <td>
+                    ${answer.peerRate}
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById(
+        "finalReport"
+    ).innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>
