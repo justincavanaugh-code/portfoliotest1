@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Gamified eLearning Demo | Justin Cavanaugh Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .sidebar h2 { margin-top: 0; }
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .sidebar a:hover { color: white; }
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .project-header {
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        .project-header h1 { margin-bottom: 8px; }
+        .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        .method-box {
+            background: #f4f7f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        .method-box h4 { margin-top: 0; color: #2c3e50; }
+        .tool-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin: 3px 3px 3px 0;
+        }
+        .case-study {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+        .case-study p { margin: 8px 0; }
+        .terminal-text {
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        /* Featured demo block */
+        .featured-demo {
+            background: #eaf4fb;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 28px 30px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .featured-demo-text h3 { margin: 0 0 8px 0; color: #2c3e50; }
+        .featured-demo-text p { margin: 0; font-size: 0.93em; color: #555; max-width: 540px; }
+        .demo-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1em;
+            white-space: nowrap;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+        .demo-btn:hover { background: #2980b9; }
+
+        /* Concept pills */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .concept-pill {
+            border-radius: 8px;
+            padding: 18px;
+            border: 1px solid #ddd;
+        }
+        .concept-pill .icon { font-size: 1.6em; margin-bottom: 8px; }
+        .concept-pill h4 { margin: 0 0 6px 0; color: #2c3e50; font-size: 0.95em; }
+        .concept-pill p { margin: 0; font-size: 0.85em; color: #555; }
+        .concept-pill.gamification { background: #eaf4fb; border-color: #aed6f1; }
+        .concept-pill.social { background: #eafaf1; border-color: #a9dfbf; }
+        .concept-pill.progress { background: #fef9e7; border-color: #f9e79f; }
+        .concept-pill.lms-free { background: #fdf2f8; border-color: #d7bde2; }
+
+        /* Iteration cards */
+        .iteration-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .iteration-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .iteration-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .iteration-card.featured { border: 2px solid #3498db; box-shadow: 0 2px 10px rgba(52,152,219,0.2); }
+        .card-header {
+            padding: 12px 16px;
+            background: #ecf0f1;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .iteration-card.featured .card-header { background: #3498db; color: white; }
+        .featured-badge {
+            background: white;
+            color: #3498db;
+            font-size: 0.75em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .card-body { padding: 16px; }
+        .card-body h4 { margin: 0 0 8px 0; font-size: 1em; }
+        .card-body p { font-size: 0.88em; color: #555; margin: 0 0 12px 0; }
+        .card-features { list-style: none; padding: 0; margin: 0 0 14px 0; }
+        .card-features li { font-size: 0.83em; color: #444; padding: 2px 0; }
+        .card-features li::before { content: "✓ "; color: #27ae60; font-weight: bold; }
+        .card-link {
+            display: inline-block;
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background: #ecf0f1;
+            color: #2c3e50;
+            transition: background 0.2s;
+        }
+        .iteration-card.featured .card-link { background: #3498db; color: white; }
+        .card-link:hover { opacity: 0.85; }
+
+        /* Agile timeline */
+        .timeline { position: relative; margin: 25px 0 25px 20px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: #3498db;
+        }
+        .timeline-item { padding: 0 0 28px 28px; position: relative; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px; top: 4px;
+            width: 15px; height: 15px;
+            border-radius: 50%;
+            background: #3498db;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #3498db;
+        }
+        .timeline-item h4 { margin: 0 0 6px 0; color: #2c3e50; }
+        .timeline-item p { margin: 0; font-size: 0.9em; color: #555; }
+
+        /* Callout */
+        .callout {
+            background: #eaf4fb;
+            border-left: 5px solid #2980b9;
+            border-radius: 0 8px 8px 0;
+            padding: 18px 20px;
+            margin: 20px 0;
+        }
+        .callout strong { color: #2980b9; }
+    </style>
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>Portfolio</h2>
+    <a href="index.html">← Back to Projects</a>
+    <hr>
+    <a href="#overview">Overview</a>
+    <a href="#demo">Featured Demo</a>
+    <a href="#concepts">Core Concepts</a>
+    <a href="#technical-details">Technical Implementation</a>
+    <a href="#iterations">Agile Iterations</a>
+    <a href="#challenges">Challenges & Solutions</a>
+    <a href="#outcomes">Outcomes & Skills</a>
+</nav>
+
+<main class="main-content">
+
+    <header class="project-header">
+        <h1>AI-Assisted Gamified eLearning Demo</h1>
+        <p><em>Inspired by ATD International Conference &amp; EXPO 2026 (ATD26)</em></p>
+        <p><strong>Role:</strong> Instructional Designer &amp; Developer</p>
+        <p><strong>Tools:</strong>
+            <span class="tool-tag">HTML / CSS / JavaScript</span>
+            <span class="tool-tag">AI-Assisted (Vibe-Coding)</span>
+            <span class="tool-tag">GitHub Pages</span>
+            <span class="tool-tag">Agile Iteration</span>
+        </p>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+        <h2 class="section-title">Project Overview</h2>
+        <p>
+            I was inspired by a session on <strong>vibe-coding</strong> at the 2026 Association for Talent Development Conference ("ATD26"). First, I was pleased to discover that I had <em>already</em> been "vibe coding": collaborating with AI to generate and refine code, and then customizing the code to generate output. But the session's live demonstration also taught me about several capabilities I had not considered. For example, the demonstration showed a fully functional gamified learning object being built and published in real time - with AI assistance — with no dedicated authoring tool, no SCORM package, and no LMS. The session challenged me to rethink how digital learning experiences can be created and distributed.
+        </p>
+        <p>
+            I left the session with a clear goal: expand my use of vibe-coding to replicate the demonstration, both in my home lab and in my work. I also used this project as an opportunity to include several concepts that were major themes of the overall ATD conference including: gamification, individualized learning experiences and cohort-inspired learning. The result was a series of progressively enhanced proof-of-concepts, each building on the last, and culminating in a gamified learning experience deployable from a simple website.
+        </p>
+        <div class="callout">
+            <strong>Note on content:</strong> The subject matter within the demo is intentionally generic (trivia-style questions). The goal was to demonstrate <em>structure and mechanics</em> without using proprietary or company-specific content.
+        </div>
+    </section>
+    
+        <!-- FEATURED DEMO -->
+    <section id="demo">
+        <h2 class="section-title">Featured Demo</h2>
+        <p>The live demo below represents achieving my goal of replicating the core elements of the demonstration I observed at the ATD26 conference: a slide-based flow, live leaderboard, prior-knowledge intake that could be used for learner-specific branching, and a final screen summarizing the learner's progress — all running as a single HTML file with no LMS, SCORM package or eLearning authoring tool required.</p>
+        <div class="featured-demo">
+            <div class="featured-demo-text">
+                <h3>Try the Gamified eLearning Demo!</h3>
+                <p>After you click Launch Demo, you'll be prompted to enter a name, select a prior knowledge level, and answer four sample questions. The demo takes less than a minute to complete. As a learner progresses through the demo, the leaderboard will update in real time. Learners are also presented with a persistent progress bar and will receive adaptive feedback as each question is answered. The module will provide a "final ranking" summary screen upon completion.</p>
+           
+            </div>
+            <a class="demo-btn" href="https://justincavanaugh-code.github.io/portfoliotest1/DynamicSlides.html" target="_blank" rel="noopener">Launch Demo →</a>
+        </div>
+    </section>
+
+
+    <!-- CORE CONCEPTS -->
+    <section id="concepts">
+        <h2 class="section-title">Core Learning Design Concepts</h2>
+        <p>Several design principles — drawn directly from session themes at the ATD26 conference — anchor every iteration of this project:</p>
+
+        <div class="concept-grid">
+            <div class="concept-pill gamification">
+                <div class="icon">🏆</div>
+                <h4>Gamification via Dynamic Leaderboard</h4>
+                <p>Learners see their real-time rank among "peers", turning a solo activity into a friendly competition that sustains engagement and motivates completion.</p>
+            </div>
+            <div class="concept-pill social">
+                <div class="icon">👥</div>
+                <h4>Cohort &amp; Social Learning</h4>
+                <p>In addition to the leaderboard, after each question, the course provides adaptive feedback, including references to how the broader cohort responded, anchoring individual responses in a collective context.</p>
+            </div>
+            <div class="concept-pill progress">
+                <div class="icon">📊</div>
+                <h4>Persistent Progress Bar</h4>
+                <p>A visible progress indicator persists throughout the experience so learners always know where they stand — reducing anxiety and drop-off.</p>
+            </div>
+            <div class="concept-pill lms-free">
+                <div class="icon">🌐</div>
+                <h4>LMS-Free &amp; SCORM-Free Delivery</h4>
+                <p>The entire learning object runs as a self-contained HTML file hosted on a public website — no authoring tool, no SCORM package, no LMS required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNICAL IMPLEMENTATION -->
+    <section id="technical-details">
+        <h2 class="section-title">Technical Implementation</h2>
+        <p>
+            The development approach for this project included working collaboratively with an AI assistant to generate initial code structures, then I manually edited, customized, and iterated on the output ("vibe-coding"). This approach reflects a growing skill set for instructional designers who want to build custom learning experiences. This is particularly valuable in terms of reducing reliance on dedicated authoring platforms and learning management systems. Of course, custom experiences like this can also be embedded into traditional eLearning courses (Rise 360, etc.). 
+        </p>
+
+        <div class="terminal-text">
+            [Workflow] Describe feature to AI → Review generated code → Edit &amp; customize → Test in browser → Iterate<br>
+            [Stack] HTML5 · CSS3 · JavaScript · GitHub Pages (free hosting)<br>
+            [Dependencies] Zero — no frameworks, no LMS, no authoring platform
+        </div>
+
+        <div class="method-box">
+            <h4>Phase 1: Concept &amp; Prompt Engineering</h4>
+            <p>Before writing a line of code, I translated the ATD26 demo concepts into specific, actionable prompts for my AI collaborator. Describing the desired output and mechanics clearly produced far better initial drafts and reduced rework. To maximize efficiency (and minimize the use of AI tokens), I carefully scripted my AI prompts. This was particularly true with the initial prompt describing my requested output for the first draft. My pre-work included creating a template for the HTML code to upload along with my prompt.</p>
+
+            <h4>Phase 2: AI-Generated Scaffolding</h4>
+            <p>My AI partner produced the structural HTML skeleton, JavaScript logic for scoring and leaderboard sorting, and base CSS styling — giving me a working draft to iterate upon rather than a "blank page" starting point.</p>
+
+            <h4>Phase 3: Human Customization &amp; Refinement</h4>
+            <p>During the iteration process, I edited the generated code directly while occasionally consulting AI as a technical advisor. Each round of editing deepened my understanding of the codebase. (And, although not my primary goal, helped develop my code-writing capabilities.)</p>
+
+            <h4>Phase 4: Agile Iteration</h4>
+            <p>Rather than treating any single version as final product, I published each iteration publicly and used the experience of interacting with the working product to drive the next round of improvements. As I reviewed each iteration, I continued to identify areas to improve as well as features I had not originally considered.</p>
+        </div>
+    </section>
+
+    <!-- AGILE ITERATIONS -->
+    <section id="iterations">
+        <h2 class="section-title">Agile Iterations: From POC to Product</h2>
+        <p>
+            For more than a decade, I have been a strong proponent of Agile methodologies. For this project especially, I embraced the concept of <strong>"shipping" early and iterating often</strong>. In showcasing this project, I thought it was important to demonstrate some early, less-impressive versions of the output. Because in the spirit of Agile, the final version was the direct result of the earlier POCs. Each version below essentially represents a sprint — a publishable artifact that demonstrated progress and informed the next build.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Sprint 1 → Functional Proof of Concept</h4>
+                <p>Established the core mechanics: content slides, a three-question quiz, real-time scoring, and a basic leaderboard. Priority was proving the concept was technically achievable with no authoring tools. UI was minimal — function over form.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Sprint 2 → Social Layer &amp; Cohort Identity</h4>
+                <p>Added a name-entry field so learners appear on the leaderboard by name, introducing a true social dimension. Expanded to four questions and refined the progress and score display.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Sprint 3 → Slide-Based Flow &amp; Final Polish</h4>
+                <p>Restructured the experience into a true slide-by-slide flow mirroring a conventional eLearning course. Added prior-knowledge selection at entry, integrated the leaderboard into each question slide, and produced a more polished interface. Although functionality remained the primary objective, this iteration included some miminal aesthetic enhancements.</p>
+            </div>
+        </div>
+
+        <div class="iteration-grid">
+            <div class="iteration-card">
+                <div class="card-header">Sprint 1 · v1.0</div>
+                <div class="card-body">
+                    <h4>eLearning Proof of Concept</h4>
+                    <p>The foundational build. Core quiz engine, scoring, and leaderboard scaffolded from the ground up.</p>
+                    <ul class="card-features">
+                        <li>Content + quiz slides</li>
+                        <li>Live score tracking</li>
+                        <li>Basic leaderboard</li>
+                        <li>Progress indicator</li>
+                    </ul>
+                    <a class="card-link" href="https://justincavanaugh-code.github.io/portfoliotest1/DynamicPOC.html" target="_blank" rel="noopener">View v1.0 →</a>
+                </div>
+            </div>
+
+            <div class="iteration-card">
+                <div class="card-header">Sprint 2 · v2.0</div>
+                <div class="card-body">
+                    <h4>Gamified eLearning Demo</h4>
+                    <p>Introduced learner identity via name entry, enabling real social comparison on a named leaderboard.</p>
+                    <ul class="card-features">
+                        <li>Named learner entry</li>
+                        <li>Expanded question set</li>
+                        <li>Refined score display</li>
+                        <li>Cohort ranking visible</li>
+                    </ul>
+                    <a class="card-link" href="https://justincavanaugh-code.github.io/portfoliotest1/Dynamic2a.html" target="_blank" rel="noopener">View v2.0 →</a>
+                </div>
+            </div>
+
+            <div class="iteration-card featured">
+                <div class="card-header">Sprint 3 · Final <span class="featured-badge">Featured</span></div>
+                <div class="card-body">
+                    <h4>Gamified eLearning Demo</h4>
+                    <p>Full slide-based interface with prior-knowledge intake, persistent leaderboard per slide, and completion screen.</p>
+                    <ul class="card-features">
+                        <li>Slide-by-slide navigation</li>
+                        <li>Prior knowledge intake</li>
+                        <li>Leaderboard on every slide</li>
+                        <li>Completion &amp; final ranking</li>
+                    </ul>
+                    <a class="card-link" href="https://justincavanaugh-code.github.io/portfoliotest1/DynamicSlides.html" target="_blank" rel="noopener">Launch Final Version Again →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section id="challenges">
+        <h2 class="section-title">Key Challenges</h2>
+
+        <div class="case-study">
+            <p><strong>The Hurdle:</strong> Replicating the leaderboard mechanic without a backend database. A "live" leaderboard typically requires a server to aggregate scores from multiple users — not available in a static HTML file.</p>
+            <p><strong>The Fix:</strong> Used the browser's built-in memory (JavaScript arrays) to simulate multi-learner data within a single session, making the social comparison mechanic feel real in a local context. A clear next step for a production version would be adding a lightweight backend.</p>
+        </div>
+
+        <div class="case-study">
+            <p><strong>The Hurdle:</strong> Transitioning from a single-page scrolling layout (v1.0) to a true slide-based flow (v3.0) required rethinking how state — current slide, score, learner name — was managed across "screens" within a single HTML file.</p>
+            <p><strong>The Fix:</strong> Worked with the AI to implement a JavaScript state machine pattern: slides are hidden and become visible based on the current state variable (similar to Storyline 360 triggers). Editing and understanding this logic firsthand gave me a much stronger mental model of how authoring tools like Articulate 360 manage slide transitions "under the hood".</p>
+        </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section id="outcomes">
+        <h2 class="section-title">Outcomes &amp; Skills Demonstrated</h2>
+        <ul>
+            <li><strong>Vibe-Coding Proficiency:</strong> Demonstrated the ability to use AI as a development partner — writing effective prompts, evaluating generated code critically, and customizing output to meet specific design requirements.</li>
+            <li><strong>Gamification Design:</strong> Applied core gamification mechanics (leaderboards, scoring, social comparison) within a learning context, grounded in ATD26 research-backed frameworks.</li>
+            <li><strong>LMS-Free Delivery:</strong> Successfully produced and published learning objects that operate entirely without SCORM, xAPI, or a learning management system — hosted on my public website.</li>
+            <li><strong>Agile Iteration:</strong> Published three progressively refined versions of the same concept, demonstrating a build→test→learn→improve cycle consistent with agile instructional design practice.</li>
+            <li><strong>Knowledge Transfer:</strong> Translated what I learned at the ATD26 conference into team-facing discussions and demonstrations, extending the impact of ATD26 beyond a personal skill-building exercise.</li>
+            <li><strong>Front-End Literacy:</strong> Deepened working knowledge of HTML, CSS, and JavaScript through hands-on editing — moving from consumer of generated code to active editor and collaborator.</li>
+        </ul>
+
+        <p><strong>Result:</strong> A publicly accessible, fully functional gamified eLearning experience developed using modern web technologies and AI-assisted development techniques, then deployed independently of traditional authoring tools or learning management systems.</p>
+    </section>
+
+</main>
+</body>
+</html>
