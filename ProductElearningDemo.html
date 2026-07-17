@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC Insurance Product Foundations - Assessment Prototype</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+    background:#eef3f8;
+    color:#333;
+}
+
+header{
+    background:#003b71;
+    color:white;
+    padding:18px;
+    position:sticky;
+    top:0;
+}
+
+header h1{
+    font-size:1.5em;
+}
+
+.status{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    font-size:.95em;
+}
+
+.progress{
+    margin-top:12px;
+    background:#d7dfe8;
+    height:16px;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.progressFill{
+    background:#00a3ad;
+    width:0%;
+    height:100%;
+    transition:.4s;
+}
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    background:white;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.question{
+    font-size:1.25em;
+    margin-bottom:25px;
+}
+
+.answers button{
+    display:block;
+    width:100%;
+    margin:12px 0;
+    padding:15px;
+    border:none;
+    border-radius:6px;
+    background:#f3f6fa;
+    cursor:pointer;
+    font-size:1em;
+    text-align:left;
+}
+
+.answers button:hover{
+    background:#ddeaf5;
+}
+
+.answers button:disabled{
+    cursor:default;
+}
+
+.correct{
+    background:#cfeecf !important;
+}
+
+.incorrect{
+    background:#ffd7d7 !important;
+}
+
+.feedback{
+    margin-top:20px;
+    padding:18px;
+    border-left:5px solid #003b71;
+    background:#f5f8fc;
+    display:none;
+}
+
+.feedback .fbTitle{
+    font-weight:bold;
+    font-size:1.1em;
+    margin-bottom:8px;
+}
+
+.feedback .fbTitle.good{
+    color:#1a7a1a;
+}
+
+.feedback .fbTitle.bad{
+    color:#b02a2a;
+}
+
+.feedback .fbStat{
+    margin-top:10px;
+    font-size:.9em;
+    color:#555;
+    font-style:italic;
+}
+
+.nextBtn{
+    margin-top:25px;
+    padding:14px 24px;
+    background:#003b71;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    display:none;
+}
+
+.summary{
+    display:none;
+    text-align:center;
+}
+
+.summary h2{
+    margin-bottom:25px;
+}
+
+.score{
+    font-size:2.8em;
+    color:#003b71;
+    margin:20px;
+}
+
+.restart{
+    margin-top:25px;
+    padding:14px 24px;
+    background:#00a3ad;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* Intro screen */
+.intro{
+    text-align:left;
+}
+
+.intro p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+.formGroup{
+    margin-bottom:20px;
+}
+
+.formGroup label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.formGroup input[type="text"],
+.formGroup select{
+    width:100%;
+    padding:12px;
+    border:1px solid #c7d2de;
+    border-radius:6px;
+    font-size:1em;
+}
+
+.levelOptions{
+    display:flex;
+    gap:10px;
+}
+
+.levelOptions button{
+    flex:1;
+    padding:14px;
+    border:2px solid #c7d2de;
+    border-radius:6px;
+    background:#f3f6fa;
+    cursor:pointer;
+    font-size:.95em;
+}
+
+.levelOptions button.selected{
+    border-color:#003b71;
+    background:#ddeaf5;
+    font-weight:bold;
+}
+
+.startBtn{
+    margin-top:10px;
+    padding:14px 24px;
+    background:#003b71;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:1em;
+}
+
+.startBtn:disabled{
+    background:#9aa9b8;
+    cursor:not-allowed;
+}
+
+.errorMsg{
+    color:#b02a2a;
+    font-size:.85em;
+    margin-top:-10px;
+    margin-bottom:15px;
+    display:none;
+}
+
+/* Leaderboard */
+.leaderboard{
+    margin-top:25px;
+    border:1px solid #d7dfe8;
+    border-radius:8px;
+    overflow:hidden;
+    text-align:left;
+}
+
+.leaderboard h3{
+    background:#f3f6fa;
+    padding:12px 16px;
+    font-size:1em;
+    border-bottom:1px solid #d7dfe8;
+}
+
+.leaderboardRow{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 16px;
+    font-size:.92em;
+    border-bottom:1px solid #eef3f8;
+}
+
+.leaderboardRow:last-child{
+    border-bottom:none;
+}
+
+.leaderboardRow.you{
+    background:#fff6d8;
+    font-weight:bold;
+}
+
+.leaderboardRank{
+    width:28px;
+    display:inline-block;
+    color:#666;
+}
+
+.leaderboardRank.top{
+    color:#b8860b;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>ABC Insurance Company Product Foundations</h1>
+
+<div class="status">
+<div id="questionCount"></div>
+<div id="scoreDisplay"></div>
+</div>
+
+<div class="progress">
+<div class="progressFill" id="progressFill"></div>
+</div>
+
+</header>
+
+<div class="container">
+
+<div id="introScreen" class="intro">
+
+<h2>Welcome</h2>
+
+<p>Before you begin the ABC Insurance Product Foundations assessment, tell us a bit about yourself.</p>
+
+<div class="formGroup">
+<label for="nameInput">Your Name</label>
+<input type="text" id="nameInput" placeholder="Enter your name">
+</div>
+
+<div class="errorMsg" id="nameError">Please enter your name to continue.</div>
+
+<div class="formGroup">
+<label>Experience Level</label>
+<div class="levelOptions" id="levelOptions">
+<button type="button" data-level="Beginner">Beginner</button>
+<button type="button" data-level="Intermediate">Intermediate</button>
+<button type="button" data-level="Expert">Expert</button>
+</div>
+</div>
+
+<div class="errorMsg" id="levelError">Please select your experience level to continue.</div>
+
+<button class="startBtn" id="startBtn">Start Assessment</button>
+
+</div>
+
+<div id="quiz" style="display:none;">
+
+<h2>Knowledge Check</h2>
+
+<div class="question" id="question"></div>
+
+<div class="answers" id="answers"></div>
+
+<div class="feedback" id="feedback">
+<div class="fbTitle" id="fbTitle"></div>
+<div class="fbExplanation" id="fbExplanation"></div>
+<div class="fbStat" id="fbStat"></div>
+</div>
+
+<button class="nextBtn" id="nextBtn">Next Question</button>
+
+<div class="leaderboard" id="leaderboard">
+<h3>Leaderboard</h3>
+<div id="leaderboardBody"></div>
+</div>
+
+</div>
+
+<div class="summary" id="summary">
+
+<h2>Assessment Complete</h2>
+
+<p>You have completed the ABC Insurance Product Foundations assessment.</p>
+
+<div class="score" id="finalScore"></div>
+
+<p id="performance"></p>
+
+<div class="leaderboard" id="finalLeaderboard">
+<h3>Final Leaderboard</h3>
+<div id="finalLeaderboardBody"></div>
+</div>
+
+<button class="restart" onclick="location.reload()">Restart Assessment</button>
+
+</div>
+
+</div>
+
+<script>
+
+const questions=[
+
+{
+question:"Which product family is primarily designed to help clients generate retirement income?",
+answers:[
+"Life Insurance",
+"Annuities",
+"Workforce Benefits",
+"Institutional Solutions"
+],
+correct:1,
+explanation:"Correct. Annuities help clients accumulate retirement savings and create guaranteed income.",
+correctPercent:78
+},
+
+{
+question:"Which product helps protect a family financially after the death of the insured?",
+answers:[
+"Variable Annuity",
+"Indexed Annuity",
+"Life Insurance",
+"Stable Value Product"
+],
+correct:2,
+explanation:"Correct. Life insurance provides a death benefit to beneficiaries.",
+correctPercent:91
+},
+
+{
+question:"What is one of the primary customer concerns that annuities help address?",
+answers:[
+"College admissions",
+"Longevity risk",
+"Mortgage refinancing",
+"Tax preparation"
+],
+correct:1,
+explanation:"Correct. Longevity risk is the possibility of outliving one's retirement savings.",
+correctPercent:64
+},
+
+{
+question:"Which line of products serves employers by offering products such as disability and voluntary benefits?",
+answers:[
+"Life Insurance",
+"Institutional Solutions",
+"Workforce Benefits",
+"Annuities"
+],
+correct:2,
+explanation:"Correct. Workforce Benefits focuses on employer-sponsored benefit programs.",
+correctPercent:72
+},
+
+{
+question:"From an Operations perspective, why is product knowledge valuable?",
+answers:[
+"To provide legal advice",
+"To perform actuarial calculations",
+"To understand customer needs and support business processes",
+"To recommend investments directly to customers"
+],
+correct:2,
+explanation:"Correct. Operations employees benefit from understanding how products support customers and business workflows.",
+correctPercent:85
+}
+
+];
+
+// Mocked "other learners" for the leaderboard. Scores are out of questions.length.
+const mockLearners=[
+{name:"Jordan M.",score:5},
+{name:"Sam K.",score:4},
+{name:"Taylor R.",score:4},
+{name:"Casey L.",score:3},
+{name:"Morgan P.",score:5},
+{name:"Riley T.",score:2},
+{name:"Avery S.",score:3},
+{name:"Quinn D.",score:4}
+];
+
+let current=0;
+let score=0;
+let learnerName="";
+let experienceLevel="";
+
+const question=document.getElementById("question");
+const answers=document.getElementById("answers");
+const feedback=document.getElementById("feedback");
+const fbTitle=document.getElementById("fbTitle");
+const fbExplanation=document.getElementById("fbExplanation");
+const fbStat=document.getElementById("fbStat");
+const next=document.getElementById("nextBtn");
+
+// ---------- Intro screen ----------
+
+const levelButtons=document.querySelectorAll("#levelOptions button");
+
+levelButtons.forEach(btn=>{
+
+btn.onclick=()=>{
+levelButtons.forEach(b=>b.classList.remove("selected"));
+btn.classList.add("selected");
+experienceLevel=btn.dataset.level;
+};
+
+});
+
+document.getElementById("startBtn").onclick=function(){
+
+const nameVal=document.getElementById("nameInput").value.trim();
+
+let valid=true;
+
+if(nameVal===""){
+document.getElementById("nameError").style.display="block";
+valid=false;
+}else{
+document.getElementById("nameError").style.display="none";
+}
+
+if(!experienceLevel){
+document.getElementById("levelError").style.display="block";
+valid=false;
+}else{
+document.getElementById("levelError").style.display="none";
+}
+
+if(!valid) return;
+
+learnerName=nameVal;
+
+document.getElementById("introScreen").style.display="none";
+document.getElementById("quiz").style.display="block";
+
+loadQuestion();
+
+};
+
+// ---------- Leaderboard ----------
+// forceTop: when true (perfect score on the final slide), the learner is
+// pinned to rank 1 regardless of ties with other mocked learners.
+
+function buildLeaderboardEntries(forceTop){
+
+const combined=mockLearners.map(l=>({name:l.name,score:l.score,isUser:false}));
+
+combined.push({name:learnerName || "You",score:score,isUser:true});
+
+if(forceTop){
+combined.sort((a,b)=>{
+if(a.isUser) return -1;
+if(b.isUser) return 1;
+return b.score-a.score;
+});
+}else{
+combined.sort((a,b)=>b.score-a.score);
+}
+
+return combined;
+
+}
+
+function renderLeaderboardInto(bodyId,forceTop){
+
+const combined=buildLeaderboardEntries(forceTop);
+
+const body=document.getElementById(bodyId);
+body.innerHTML="";
+
+combined.forEach((entry,index)=>{
+
+const row=document.createElement("div");
+row.className="leaderboardRow"+(entry.isUser ? " you" : "");
+
+const rankClass=index===0 ? "leaderboardRank top" : "leaderboardRank";
+
+row.innerHTML=
+`<span><span class="${rankClass}">${index+1}.</span>${entry.name}${entry.isUser ? " (you)" : ""}</span><span>${entry.score} / ${questions.length}</span>`;
+
+body.appendChild(row);
+
+});
+
+}
+
+function renderLeaderboard(){
+
+renderLeaderboardInto("leaderboardBody",false);
+
+}
+
+function renderFinalLeaderboard(){
+
+const perfect=score===questions.length;
+
+renderLeaderboardInto("finalLeaderboardBody",perfect);
+
+}
+
+// ---------- Quiz flow ----------
+
+function loadQuestion(){
+
+document.getElementById("questionCount").innerHTML=
+`Question ${current+1} of ${questions.length}`;
+
+document.getElementById("scoreDisplay").innerHTML=
+`Score: ${score}`;
+
+document.getElementById("progressFill").style.width=
+((current)/questions.length)*100+"%";
+
+feedback.style.display="none";
+next.style.display="none";
+
+question.innerHTML=questions[current].question;
+
+answers.innerHTML="";
+
+questions[current].answers.forEach((a,index)=>{
+
+const btn=document.createElement("button");
+btn.innerHTML=a;
+
+btn.onclick=()=>selectAnswer(index,btn);
+
+answers.appendChild(btn);
+
+});
+
+renderLeaderboard();
+
+}
+
+function selectAnswer(choice,button){
+
+const buttons=document.querySelectorAll(".answers button");
+
+buttons.forEach(b=>b.disabled=true);
+
+const isCorrect=choice===questions[current].correct;
+
+if(isCorrect){
+
+button.classList.add("correct");
+score++;
+
+fbTitle.className="fbTitle good";
+fbTitle.innerHTML="You are correct!";
+
+}else{
+
+button.classList.add("incorrect");
+buttons[questions[current].correct].classList.add("correct");
+
+fbTitle.className="fbTitle bad";
+fbTitle.innerHTML="That's not correct.";
+
+}
+
+document.getElementById("scoreDisplay").innerHTML=
+`Score: ${score}`;
+
+fbExplanation.innerHTML=questions[current].explanation;
+
+fbStat.innerHTML=
+`${questions[current].correctPercent}% of learners answered this question correctly.`;
+
+feedback.style.display="block";
+
+next.style.display="inline-block";
+
+renderLeaderboard();
+
+}
+
+next.onclick=function(){
+
+current++;
+
+if(current<questions.length){
+
+loadQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+}
+
+function finishQuiz(){
+
+document.getElementById("quiz").style.display="none";
+document.getElementById("summary").style.display="block";
+
+document.getElementById("progressFill").style.width="100%";
+
+document.getElementById("finalScore").innerHTML=
+`${score} / ${questions.length}`;
+
+let pct=score/questions.length;
+
+let text="";
+
+if(pct===1){
+
+text="Outstanding! You demonstrated an excellent understanding of the core product offerings. You've claimed the top spot on the leaderboard!";
+
+}else if(pct>=0.8){
+
+text="Great job! You have a strong foundational understanding.";
+
+}else if(pct>=0.6){
+
+text="Good start. Review the product families and customer needs to strengthen your understanding.";
+
+}else{
+
+text="Consider reviewing the course content before attempting the assessment again.";
+
+}
+
+document.getElementById("performance").innerHTML=text;
+
+renderFinalLeaderboard();
+
+}
+
+</script>
+
+</body>
+</html>
